@@ -94,7 +94,6 @@ export default function Home() {
             className="company-header"
             style={{
               display: "grid",
-              gridTemplateColumns: "2fr 1.5fr 1fr 0.5fr",
               padding: "0.8rem 0",
               fontSize: "0.55rem",
               textTransform: "uppercase",

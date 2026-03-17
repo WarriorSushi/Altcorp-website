@@ -19,9 +19,9 @@ export function CompanyRow({ name, description, sector, href, delay = 0 }: Compa
       <Link href={href}>
         <motion.div
           className="company-row"
+          className="company-row"
           style={{
             display: "grid",
-            gridTemplateColumns: "2fr 1.5fr 1fr 0.5fr",
             alignItems: "center",
             padding: "1.1rem 0",
             borderBottom: "1px solid var(--line)",
