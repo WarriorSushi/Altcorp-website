@@ -24,7 +24,7 @@ export function Header() {
             : "py-6"
         }`}
       >
-        <div className="flex items-center gap-8 max-w-[1200px] mx-auto px-8 w-full">
+        <div className="flex items-center gap-6 sm:gap-8 max-w-[1200px] mx-auto px-5 sm:px-8 w-full">
           <Link
             href="/"
             className="flex items-center gap-0"

@@ -34,11 +34,11 @@ export function MobileNav({ open, onClose }: MobileNavProps) {
   return (
     <div className="fixed inset-0 z-100">
       {/* Backdrop */}
-      <div className="absolute inset-0 bg-black/60" onClick={onClose} />
-      {/* Panel */}
-      <div className="absolute top-0 right-0 h-full w-[280px] bg-[var(--surface)] border-l border-[var(--line)] flex flex-col p-8">
+      <div className="absolute inset-0 bg-black/70 backdrop-blur-sm" onClick={onClose} />
+      {/* Panel — full width on small phones, 300px on larger */}
+      <div className="absolute top-0 right-0 h-full w-full max-w-[300px] bg-[var(--surface)] border-l border-[var(--line)] flex flex-col p-6 sm:p-8">
         <button
-          className="self-end p-2 text-[var(--dim)] hover:text-white"
+          className="self-end p-3 -mr-1 -mt-1 text-[var(--dim)] hover:text-white min-w-[48px] min-h-[48px] flex items-center justify-center"
           onClick={onClose}
           aria-label="Close menu"
         >
@@ -47,13 +47,13 @@ export function MobileNav({ open, onClose }: MobileNavProps) {
             <line x1="16" y1="4" x2="4" y2="16" />
           </svg>
         </button>
-        <nav className="flex flex-col gap-6 mt-8">
+        <nav className="flex flex-col gap-2 mt-6">
           {navigation.map((item) => (
             <Link
               key={item.href}
               href={item.href}
               onClick={onClose}
-              className="text-[1.1rem] font-[700] tracking-[0.05em] uppercase text-[var(--ghost)] hover:text-white transition-colors"
+              className="text-[1.1rem] font-[700] tracking-[0.05em] uppercase text-[var(--ghost)] hover:text-white transition-colors min-h-[48px] flex items-center"
             >
               {item.label}
             </Link>

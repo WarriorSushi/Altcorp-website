@@ -135,15 +135,15 @@ export default async function CompanyPage({ params }: Props) {
       <div className="container"><SectionDivider /></div>
 
       {/* Navigation */}
-      <section className="container" style={{ padding: "4rem 0 6rem" }}>
+      <section className="container" style={{ padding: "clamp(2.5rem, 6vw, 4rem) 0 clamp(3rem, 8vw, 6rem)" }}>
         <Reveal>
-          <div className="flex justify-between items-center flex-wrap gap-4">
+          <div className="flex flex-col sm:flex-row justify-between items-stretch sm:items-center gap-3">
             {prev ? (
               <Link href={`/companies/${prev.slug}`} className="btn">
                 ← {prev.name}
               </Link>
             ) : (
-              <div />
+              <div className="hidden sm:block" />
             )}
             <Link href="/#companies" className="btn">
               All Companies
@@ -153,7 +153,7 @@ export default async function CompanyPage({ params }: Props) {
                 {next.name} →
               </Link>
             ) : (
-              <div />
+              <div className="hidden sm:block" />
             )}
           </div>
         </Reveal>

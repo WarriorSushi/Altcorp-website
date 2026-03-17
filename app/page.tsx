@@ -163,18 +163,18 @@ export default function Home() {
       <SectionDivider />
 
       {/* ── CTA ── */}
-      <section className="container" style={{ padding: "8rem 0", textAlign: "center" }}>
+      <section className="container" style={{ padding: "clamp(4rem, 10vw, 8rem) 0", textAlign: "center" }}>
         <Reveal>
-          <p className="section-label" style={{ marginBottom: "2rem" }}>Get Started</p>
+          <p className="section-label" style={{ marginBottom: "1.5rem" }}>Get Started</p>
           <h2 className="cta-title">
             <span style={{ fontWeight: 900 }}>Get in</span>
             <br />
             <span className="cta-outline">Touch</span>
           </h2>
-          <p style={{ color: "var(--dim)", fontSize: "0.88rem", marginTop: "2rem", maxWidth: "24rem", margin: "2rem auto 0" }}>
+          <p className="body-text" style={{ marginTop: "1.5rem", maxWidth: "24rem", marginLeft: "auto", marginRight: "auto", textAlign: "center" }}>
             Partnerships, press, or general inquiries — we&apos;d love to hear from you.
           </p>
-          <div style={{ display: "flex", gap: "1rem", justifyContent: "center", marginTop: "2.5rem", flexWrap: "wrap" }}>
+          <div className="flex flex-col sm:flex-row gap-3 justify-center mt-8">
             <a href="/contact" className="btn btn-fill">Contact Altcorp →</a>
             <a href={`mailto:${contact.email}`} className="btn">{contact.email}</a>
           </div>
