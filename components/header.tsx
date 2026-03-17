@@ -18,23 +18,30 @@ export function Header() {
   return (
     <>
       <header
-        className={`fixed top-0 left-0 right-0 z-90 py-6 transition-colors duration-200 ${
-          scrolled ? "backdrop-blur-lg bg-black/80" : ""
+        className={`fixed top-0 left-0 right-0 z-90 transition-all duration-300 ${
+          scrolled
+            ? "py-4 backdrop-blur-xl bg-[rgba(3,3,3,0.85)] border-b border-[var(--line)]"
+            : "py-6"
         }`}
       >
-        <div className="flex items-center gap-8 max-w-[1200px] mx-auto w-[min(1200px,calc(100vw-4rem))]">
+        <div className="flex items-center gap-8 max-w-[1200px] mx-auto px-8 w-full">
           <Link
             href="/"
-            className="text-[0.88rem] font-[800] tracking-[0.08em] uppercase"
+            className="flex items-center gap-0"
           >
-            Altcorp
+            <span className="text-[0.88rem] font-[900] tracking-[0.08em] uppercase">
+              Alt
+            </span>
+            <span className="text-[0.88rem] font-[400] tracking-[0.08em] uppercase text-[var(--dim)]">
+              corp
+            </span>
           </Link>
-          <nav className="ml-auto hidden md:flex gap-[1.8rem]">
+          <nav className="ml-auto hidden md:flex gap-[2rem]">
             {navigation.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
-                className="text-[var(--dim)] text-[0.78rem] font-[600] tracking-[0.05em] uppercase transition-colors duration-200 hover:text-white"
+                className="text-[var(--dim)] text-[0.72rem] font-[600] tracking-[0.08em] uppercase transition-colors duration-300 hover:text-white"
               >
                 {item.label}
               </Link>

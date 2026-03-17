@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { motion } from "framer-motion";
 import { Reveal } from "@/components/reveal";
 
@@ -12,38 +13,39 @@ interface CompanyRowProps {
   delay?: number;
 }
 
-export function CompanyRow({ name, description, sector, href, isFirst, delay = 0 }: CompanyRowProps) {
+export function CompanyRow({ name, description, sector, href, delay = 0 }: CompanyRowProps) {
   return (
     <Reveal delay={delay}>
-      <motion.a
-        href={href}
-        className="company-row"
-        style={{
-          display: "grid",
-          gridTemplateColumns: "2fr 1.5fr 1fr 0.5fr",
-          alignItems: "center",
-          padding: "1.1rem 0",
-          borderBottom: "1px solid var(--line)",
-          borderTop: isFirst ? "1px solid var(--line)" : undefined,
-          textDecoration: "none",
-          color: "inherit",
-          transition: "all 0.25s ease",
-        }}
-        whileHover={{
-          paddingLeft: 12,
-          backgroundColor: "rgba(255,255,255,0.02)",
-        }}
-      >
-        <span style={{ fontSize: "1.1rem", fontWeight: 800 }}>{name}</span>
-        <span className="company-desc" style={{ fontSize: "0.82rem", color: "var(--dim)" }}>{description}</span>
-        <span className="company-sector" style={{ fontSize: "0.7rem", textTransform: "uppercase", letterSpacing: "0.1em", color: "var(--dim)" }}>{sector}</span>
-        <motion.span
-          className="company-arrow"
-          style={{ fontSize: "1.2rem", color: "var(--dim)", textAlign: "right" }}
+      <Link href={href}>
+        <motion.div
+          className="company-row"
+          style={{
+            display: "grid",
+            gridTemplateColumns: "2fr 1.5fr 1fr 0.5fr",
+            alignItems: "center",
+            padding: "1.1rem 0",
+            borderBottom: "1px solid var(--line)",
+            textDecoration: "none",
+            color: "inherit",
+            cursor: "pointer",
+          }}
+          whileHover={{
+            paddingLeft: 16,
+            backgroundColor: "rgba(167,139,250,0.02)",
+          }}
+          transition={{ duration: 0.25, ease: "easeOut" }}
         >
-          →
-        </motion.span>
-      </motion.a>
+          <span style={{ fontSize: "1.05rem", fontWeight: 800, letterSpacing: "-0.01em" }}>{name}</span>
+          <span className="company-desc" style={{ fontSize: "0.8rem", color: "var(--dim)" }}>{description}</span>
+          <span className="company-sector" style={{ fontSize: "0.62rem", textTransform: "uppercase", letterSpacing: "0.12em", color: "var(--dim)" }}>{sector}</span>
+          <motion.span
+            className="company-arrow"
+            style={{ fontSize: "0.9rem", color: "var(--dim)", textAlign: "right" }}
+          >
+            →
+          </motion.span>
+        </motion.div>
+      </Link>
     </Reveal>
   );
 }

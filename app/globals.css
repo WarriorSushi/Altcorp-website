@@ -1,14 +1,16 @@
 @import "tailwindcss";
 
 :root {
-  --bg: #000000;
+  --bg: #030303;
   --surface: #0A0A0A;
   --elevated: #111111;
-  --white: #ffffff;
-  --ghost: rgba(255,255,255,0.7);
-  --dim: rgba(255,255,255,0.4);
-  --line: rgba(255,255,255,0.06);
-  --line-strong: rgba(255,255,255,0.12);
+  --white: #f5f5f7;
+  --ghost: rgba(245,245,247,0.7);
+  --dim: rgba(245,245,247,0.35);
+  --line: rgba(245,245,247,0.06);
+  --line-strong: rgba(245,245,247,0.12);
+  --accent: #a78bfa;
+  --accent-dim: rgba(167,139,250,0.12);
 }
 
 * { box-sizing: border-box; margin: 0; }
@@ -26,7 +28,7 @@ body {
 a { color: inherit; text-decoration: none; }
 img { display: block; max-width: 100%; }
 
-::selection { background: rgba(255,255,255,0.15); }
+::selection { background: rgba(167,139,250,0.2); color: #fff; }
 
 .container {
   max-width: 1200px;
@@ -37,12 +39,25 @@ img { display: block; max-width: 100%; }
 
 .section-padding { padding: 6rem 0; }
 
-/* Hero */
+/* ── Hero ── */
 .hero {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
+  position: relative;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 800px;
+  height: 600px;
+  background: radial-gradient(ellipse at center, rgba(167,139,250,0.06) 0%, transparent 70%);
+  pointer-events: none;
 }
 
 .hero-title {
@@ -63,9 +78,9 @@ img { display: block; max-width: 100%; }
 .meta-label {
   display: block;
   color: var(--dim);
-  font-size: 0.65rem;
+  font-size: 0.6rem;
   text-transform: uppercase;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.14em;
   margin-bottom: 0.4rem;
 }
 
@@ -74,12 +89,12 @@ img { display: block; max-width: 100%; }
   font-weight: 700;
 }
 
-/* Section labels */
+/* ── Section labels ── */
 .section-label {
   color: var(--dim);
-  font-size: 0.62rem;
+  font-size: 0.58rem;
   text-transform: uppercase;
-  letter-spacing: 0.16em;
+  letter-spacing: 0.18em;
   margin-bottom: 1.5rem;
 }
 
@@ -99,11 +114,11 @@ img { display: block; max-width: 100%; }
 .body-text {
   color: var(--ghost);
   font-size: 0.92rem;
-  line-height: 1.7;
+  line-height: 1.75;
   max-width: 36rem;
 }
 
-/* Founder */
+/* ── Founder ── */
 .founder-name {
   font-size: clamp(2rem, 4vw, 3.2rem);
   font-weight: 900;
@@ -112,7 +127,7 @@ img { display: block; max-width: 100%; }
   line-height: 0.9;
 }
 
-/* CTA */
+/* ── CTA ── */
 .cta-title {
   font-size: clamp(3rem, 8vw, 7rem);
   text-transform: uppercase;
@@ -121,41 +136,57 @@ img { display: block; max-width: 100%; }
 }
 
 .cta-outline {
-  -webkit-text-stroke: 1px white;
+  -webkit-text-stroke: 1px var(--white);
   -webkit-text-fill-color: transparent;
   font-weight: 900;
 }
 
-/* Buttons */
+/* ── Buttons ── */
 .btn {
   display: inline-flex;
   align-items: center;
   gap: 0.25rem;
   min-height: 44px;
-  padding: 0 1.25rem;
-  border: 1px solid var(--line);
-  font-size: 0.78rem;
+  padding: 0 1.5rem;
+  border: 1px solid var(--line-strong);
+  font-size: 0.72rem;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.06em;
-  transition: all 0.2s;
+  letter-spacing: 0.08em;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   background: transparent;
-  color: white;
+  color: var(--ghost);
   cursor: pointer;
 }
 
 .btn:hover {
-  background: white;
-  color: black;
+  background: var(--white);
+  color: var(--bg);
+  border-color: var(--white);
 }
 
 .btn-fill {
-  background: white;
-  color: black;
-  border-color: white;
+  background: var(--white);
+  color: var(--bg);
+  border-color: var(--white);
 }
 
-/* Responsive */
+.btn-fill:hover {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}
+
+/* ── Feature cards ── */
+.feature-card {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.feature-card:hover {
+  border-color: rgba(167,139,250,0.15) !important;
+  background: rgba(167,139,250,0.03) !important;
+}
+
+/* ── Responsive ── */
 @media (max-width: 900px) {
   .split-grid { grid-template-columns: 1fr; gap: 2.5rem; }
   .company-header .company-sector,
