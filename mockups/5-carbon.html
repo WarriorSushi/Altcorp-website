@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Altcorp — 5: Carbon</title>
+<link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500;600;700&family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0}
+:root{
+  --bg:#0B0B0F;--surface:#111116;--elevated:#18181F;
+  --white:#E8E6F0;--ghost:rgba(232,230,240,0.6);--dim:rgba(232,230,240,0.3);
+  --green:#10B981;--green-soft:rgba(16,185,129,0.08);--green-glow:rgba(16,185,129,0.2);
+  --line:rgba(232,230,240,0.06);
+  --display:'Outfit',sans-serif;--mono:'Geist Mono',monospace;
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--display);color:var(--white);background:var(--bg);line-height:1.5;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+.container{width:min(1200px,calc(100vw - 3rem));margin:0 auto}
+
+/* Grid lines background */
+body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
+background-image:
+  linear-gradient(var(--line) 1px,transparent 1px),
+  linear-gradient(90deg,var(--line) 1px,transparent 1px);
+background-size:80px 80px;opacity:0.5}
+
+.relative{position:relative;z-index:2}
+
+/* HEADER */
+.header{position:fixed;top:0;left:0;right:0;z-index:90;padding:0.8rem 0}
+.header-inner{display:flex;align-items:center;gap:2rem;max-width:1200px;margin:0 auto;width:calc(100% - 3rem);padding:0.5rem 0.7rem 0.5rem 0.9rem;border:1px solid var(--line);border-radius:12px;background:rgba(11,11,15,0.8);backdrop-filter:blur(20px)}
+.brand{display:flex;align-items:center;gap:0.6rem}
+.brand-mark{width:28px;height:28px;border-radius:6px;background:var(--green);display:grid;place-items:center;font-size:0.75rem;font-weight:800;color:var(--bg)}
+.brand-name{font-size:0.88rem;font-weight:700;letter-spacing:-0.02em}
+.brand-dot{color:var(--green);font-size:0.5rem;margin:0 0.15rem}
+nav{margin-left:auto;display:flex;gap:0.15rem}
+nav a{color:var(--dim);font-family:var(--mono);font-size:0.72rem;font-weight:500;padding:0.35rem 0.55rem;border-radius:6px;transition:all .15s}
+nav a:hover{color:var(--white);background:rgba(232,230,240,0.04)}
+.nav-status{display:flex;align-items:center;gap:0.4rem;color:var(--green);font-family:var(--mono);font-size:0.68rem;font-weight:600;padding:0.35rem 0.7rem;border:1px solid rgba(16,185,129,0.2);border-radius:6px;background:var(--green-soft)}
+.nav-status::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--green);box-shadow:0 0 6px var(--green);animation:blink 2s infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0.3}}
+
+/* HERO — System terminal feel */
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:8rem 0 4rem}
+.hero-terminal{font-family:var(--mono);color:var(--dim);font-size:0.72rem;margin-bottom:1.5rem;display:flex;flex-direction:column;gap:0.3rem}
+.hero-terminal .line{display:flex;gap:0.5rem}
+.hero-terminal .prompt{color:var(--green)}
+.hero-terminal .path{color:var(--ghost)}
+.hero h1{font-size:clamp(3.5rem,9vw,7.5rem);font-weight:900;line-height:0.88;letter-spacing:-0.06em}
+.hero h1 .green{color:var(--green)}
+.hero h1 .dim{color:var(--dim);font-weight:400}
+.hero .sub{color:var(--ghost);font-size:0.95rem;line-height:1.65;max-width:34rem;margin-top:1.5rem}
+.hero .actions{display:flex;gap:0.6rem;margin-top:2rem}
+
+/* Stats bar */
+.stats-bar{display:flex;gap:1px;margin-top:3rem;border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.stat{flex:1;padding:1rem 1.2rem;background:var(--surface);display:grid;gap:0.2rem}
+.stat .num{font-size:1.8rem;font-weight:900;letter-spacing:-0.04em;color:var(--white)}
+.stat .label{font-family:var(--mono);color:var(--dim);font-size:0.6rem;font-weight:500;letter-spacing:0.08em;text-transform:uppercase}
+
+/* BUTTONS */
+.btn{display:inline-flex;align-items:center;gap:0.4rem;min-height:40px;padding:0 1rem;border:1px solid var(--line);border-radius:8px;font-family:var(--display);font-size:0.82rem;font-weight:700;cursor:pointer;transition:all .15s;background:transparent;color:var(--white)}
+.btn-green{background:var(--green);color:var(--bg);border-color:var(--green);box-shadow:0 0 16px var(--green-glow)}
+.btn-green:hover{box-shadow:0 0 28px var(--green-glow);transform:translateY(-1px)}
+.btn:hover{border-color:rgba(232,230,240,0.15);background:rgba(232,230,240,0.03)}
+
+/* SECTIONS */
+.section{padding:clamp(4rem,8vw,6rem) 0}
+.section-label{font-family:var(--mono);color:var(--green);font-size:0.62rem;font-weight:600;letter-spacing:0.08em;margin-bottom:1rem}
+.section h2{font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:800;letter-spacing:-0.04em;line-height:1}
+.section .text{color:var(--ghost);font-size:0.9rem;line-height:1.65;max-width:34rem;margin-top:0.6rem}
+
+/* Split */
+.split{display:grid;grid-template-columns:1fr 1fr;gap:2rem}
+
+/* Company grid — code block style */
+.company-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1px;border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.co-card{background:var(--surface);padding:1.2rem;display:flex;flex-direction:column;gap:0.4rem;transition:background .2s;cursor:pointer;position:relative}
+.co-card:hover{background:var(--elevated)}
+.co-card::before{content:"";position:absolute;top:0;left:0;width:3px;height:100%;background:var(--green);opacity:0;transition:opacity .2s}
+.co-card:hover::before{opacity:1}
+.co-card .sector{font-family:var(--mono);color:var(--green);font-size:0.58rem;font-weight:600;letter-spacing:0.06em;text-transform:uppercase}
+.co-card h3{font-size:1.05rem;font-weight:800;letter-spacing:-0.02em}
+.co-card .desc{color:var(--dim);font-size:0.8rem;line-height:1.55}
+.co-card .link{font-family:var(--mono);color:var(--ghost);font-size:0.72rem;font-weight:500;margin-top:auto;padding-top:0.6rem}
+.co-card:hover .link{color:var(--green)}
+
+/* Panel */
+.panel{border:1px solid var(--line);border-radius:12px;background:var(--surface);padding:1.3rem;display:grid;gap:0.5rem;align-content:start}
+.panel h3{font-size:1.05rem;font-weight:800;letter-spacing:-0.02em}
+.panel p{color:var(--dim);font-size:0.86rem;line-height:1.6}
+.panel-accent{border-left:3px solid var(--green)}
+
+/* Founder */
+.founder-name{font-size:clamp(2rem,4.5vw,3.5rem);font-weight:900;letter-spacing:-0.05em;line-height:0.9}
+.founder-role{font-family:var(--mono);color:var(--green);font-size:0.62rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;margin-top:0.6rem}
+.founder-bio{color:var(--ghost);font-size:0.9rem;line-height:1.65;margin-top:1rem}
+.founder-image{border:1px solid var(--line);border-radius:12px;background:var(--surface);min-height:400px;display:grid;place-items:center}
+.founder-image span{color:var(--dim);font-family:var(--mono);font-size:0.65rem;letter-spacing:0.06em;text-transform:uppercase}
+
+/* CTA */
+.cta{border:1px solid var(--line);border-radius:16px;background:var(--surface);padding:clamp(2.5rem,5vw,4rem);text-align:center;position:relative;overflow:hidden}
+.cta::before{content:"";position:absolute;bottom:-60%;left:50%;transform:translateX(-50%);width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,var(--green-soft),transparent 60%);pointer-events:none}
+.cta h2{font-size:clamp(2rem,4vw,3rem);font-weight:900;letter-spacing:-0.04em;position:relative}
+.cta h2 .green{color:var(--green)}
+.cta p{color:var(--ghost);font-size:0.88rem;margin-top:0.6rem;position:relative}
+.cta .actions{margin-top:1.5rem;position:relative}
+
+/* FOOTER */
+footer{border-top:1px solid var(--line);padding:2.5rem 0 1.5rem}
+.footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:2rem}
+.footer-brand{font-size:0.95rem;font-weight:800;display:flex;align-items:center;gap:0.4rem}
+.footer-brand .dot{color:var(--green);font-size:0.5rem}
+.footer-desc{color:var(--dim);font-size:0.78rem;margin-top:0.4rem;line-height:1.5}
+.footer-heading{font-family:var(--mono);color:var(--dim);font-size:0.58rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:0.6rem}
+.footer-links{list-style:none;padding:0;display:grid;gap:0.1rem}
+.footer-links a{color:var(--ghost);font-size:0.8rem;font-weight:500;min-height:28px;display:inline-flex;align-items:center;transition:color .15s}
+.footer-links a:hover{color:var(--green)}
+.footer-base{margin-top:2rem;padding-top:1rem;border-top:1px solid var(--line);color:var(--dim);font-family:var(--mono);font-size:0.65rem;display:flex;justify-content:space-between}
+
+@media(max-width:900px){.split,.footer-grid{grid-template-columns:1fr}.company-grid{grid-template-columns:1fr}.hero h1{font-size:clamp(2.5rem,11vw,3.5rem)}.stats-bar{flex-wrap:wrap}nav{display:none}}
+
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .5s ease,transform .5s ease}
+.reveal.visible{opacity:1;transform:none}
+</style>
+</head>
+<body>
+<div class="relative">
+
+<header class="header">
+<div class="header-inner">
+  <div class="brand"><div class="brand-mark">A</div><span class="brand-name">Altcorp</span></div>
+  <nav>
+    <a href="#">about</a>
+    <a href="#">companies</a>
+    <a href="#">leadership</a>
+    <a href="#">contact</a>
+  </nav>
+  <div class="nav-status">operational</div>
+</div>
+</header>
+
+<main>
+<div class="container">
+
+<section class="hero">
+  <div class="hero-terminal reveal">
+    <div class="line"><span class="prompt">$</span><span class="path">~/altcorp</span><span>status</span></div>
+    <div class="line"><span style="color:var(--green)">●</span><span>7 companies active &middot; 4 sectors &middot; India</span></div>
+  </div>
+  <h1 class="reveal">Build<span class="green">.</span><br>Operate<span class="green">.</span><br>Scale<span class="dim">.</span></h1>
+  <p class="sub reveal">Altcorp is the parent company behind a growing portfolio of software businesses, digital platforms, and operating brands.</p>
+  <div class="actions reveal">
+    <button class="btn btn-green">Explore Companies →</button>
+    <button class="btn">About Altcorp</button>
+  </div>
+  <div class="stats-bar reveal">
+    <div class="stat"><span class="num">7</span><span class="label">companies</span></div>
+    <div class="stat"><span class="num">4</span><span class="label">sectors</span></div>
+    <div class="stat"><span class="num">'24</span><span class="label">founded</span></div>
+    <div class="stat"><span class="num">IN</span><span class="label">base</span></div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="split reveal">
+    <div>
+      <p class="section-label">// about</p>
+      <h2>Internet businesses. Long-term ownership.</h2>
+      <p class="text">One parent company, multiple specialised businesses. Each serves a distinct market while sharing infrastructure, strategy, and vision.</p>
+    </div>
+    <div class="panel panel-accent">
+      <p class="section-label">// structure</p>
+      <h3>Built for the long term.</h3>
+      <p>Altcorp provides ownership, strategic direction, and operating structure across software, AI, healthcare, and consumer internet.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <p class="section-label reveal">// companies</p>
+  <h2 class="reveal" style="margin-bottom:1.5rem">The portfolio</h2>
+  <div class="company-grid reveal">
+    <article class="co-card"><span class="sector">software</span><h3>BurnerLinks</h3><p class="desc">Self-destructing links for privacy-first sharing</p><span class="link">→ explore</span></article>
+    <article class="co-card"><span class="sector">devtools</span><h3>Feedbacks.dev</h3><p class="desc">Developer feedback collection</p><span class="link">→ explore</span></article>
+    <article class="co-card"><span class="sector">analytics</span><h3>Supaviewer</h3><p class="desc">Entertainment analytics platform</p><span class="link">→ explore</span></article>
+    <article class="co-card"><span class="sector">healthcare</span><h3>Verified.Doctor</h3><p class="desc">Medical professional verification</p><span class="link">→ explore</span></article>
+    <article class="co-card"><span class="sector">ai / consumer</span><h3>MyGang AI</h3><p class="desc">AI-native social experiences</p><span class="link">→ explore</span></article>
+    <article class="co-card"><span class="sector">communication</span><h3>Ottr Chat</h3><p class="desc">Privacy-first messaging</p><span class="link">→ explore</span></article>
+    <article class="co-card"><span class="sector">gaming</span><h3>AFKNPC</h3><p class="desc">Gaming community platform</p><span class="link">→ explore</span></article>
+  </div>
+</section>
+
+<section class="section">
+  <div class="split reveal">
+    <div>
+      <p class="section-label">// founder</p>
+      <h2 class="founder-name">Dr. Syed Irfan</h2>
+      <p class="founder-role">founder & group lead</p>
+      <p class="founder-bio">Oversees group strategy, product direction, and long-term development across all businesses and platforms.</p>
+      <div style="margin-top:1.5rem"><a class="btn" href="#">Read More →</a></div>
+    </div>
+    <div class="founder-image"><span>[ portrait ]</span></div>
+  </div>
+</section>
+
+<section class="section reveal">
+  <div class="cta">
+    <p class="section-label">// contact</p>
+    <h2>Get in <span class="green">touch</span></h2>
+    <p>Enquiries, partnerships, or questions about any company under Altcorp.</p>
+    <div class="actions"><button class="btn btn-green">Contact →</button></div>
+  </div>
+</section>
+
+</div>
+</main>
+
+<footer>
+<div class="container">
+  <div class="footer-grid">
+    <div><div class="footer-brand">Altcorp <span class="dot">●</span></div><p class="footer-desc">Parent company behind software, platforms, and operating brands.</p></div>
+    <div><p class="footer-heading">pages</p><ul class="footer-links"><li><a href="#">Home</a></li><li><a href="#">About</a></li><li><a href="#">Companies</a></li><li><a href="#">Leadership</a></li><li><a href="#">Contact</a></li></ul></div>
+    <div><p class="footer-heading">connect</p><ul class="footer-links"><li><a href="mailto:contact@altcorp.in">contact@altcorp.in</a></li><li><a href="#">India</a></li></ul></div>
+  </div>
+  <div class="footer-base"><span>&copy; 2026 altcorp</span><span>all systems operational</span></div>
+</div>
+</footer>
+
+</div>
+
+<script>
+const els=document.querySelectorAll('.reveal');const obs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target)}})},{threshold:0.1});
+els.forEach((el,i)=>{el.style.transitionDelay=`${(i%6)*50}ms`;if(el.getBoundingClientRect().top<innerHeight*1.2)el.classList.add('visible');else obs.observe(el)});
+</script>
+</body>
+</html>

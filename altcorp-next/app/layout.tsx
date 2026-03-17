@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import { Geist } from "next/font/google";
 import "./globals.css";
+import { Header } from "@/components/header";
+import { Footer } from "@/components/footer";
+import { Grain } from "@/components/grain";
 
 const geist = Geist({ subsets: ["latin"], variable: "--font-geist" });
 
@@ -13,7 +16,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" className={geist.variable}>
       <body className="font-[family-name:var(--font-geist)]">
-        {children}
+        <Header />
+        <main>{children}</main>
+        <Footer />
+        <Grain />
       </body>
     </html>
   );

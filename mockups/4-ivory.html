@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Altcorp — 4: Ivory</title>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0}
+:root{
+  --bg:#FFFDF8;--warm:#FBF7F0;--cream:#F5EFE4;
+  --ink:#0F0D0A;--ink-soft:#2A2520;--muted:#7D746A;
+  --accent:#1A1A1A;--pop:#E8553D;--pop-soft:rgba(232,85,61,0.08);
+  --line:rgba(15,13,10,0.08);--line-strong:rgba(15,13,10,0.14);
+  --shadow:0 20px 50px rgba(15,13,10,0.06);
+  --display:'Bricolage Grotesque',sans-serif;--body:'Newsreader',serif;
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--body);color:var(--ink);background:var(--bg);line-height:1.72;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+.container{width:min(1140px,calc(100vw - 4rem));margin:0 auto}
+
+/* HEADER — editorial top bar */
+.header{border-bottom:1px solid var(--line);padding:0}
+.header-inner{display:flex;align-items:center;min-height:64px;gap:2rem}
+.brand{font-family:var(--display);font-size:1.2rem;font-weight:800;letter-spacing:-0.04em}
+nav{margin-left:auto;display:flex;gap:0}
+nav a{color:var(--muted);font-family:var(--display);font-size:0.82rem;font-weight:600;padding:1.3rem 0.9rem;border-bottom:2px solid transparent;transition:all .2s}
+nav a:hover{color:var(--ink);border-bottom-color:var(--pop)}
+.nav-active{color:var(--ink);border-bottom-color:var(--pop)}
+
+/* HERO — editorial magazine spread */
+.hero{padding:clamp(3rem,6vw,5rem) 0 clamp(2rem,4vw,3rem)}
+.hero-top{display:flex;align-items:flex-end;gap:2rem;margin-bottom:1.5rem}
+.hero-issue{color:var(--pop);font-family:var(--display);font-size:0.68rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase}
+.hero-date{color:var(--muted);font-size:0.78rem;font-weight:500}
+.hero h1{font-family:var(--display);font-size:clamp(3.5rem,8vw,6.5rem);font-weight:800;line-height:0.88;letter-spacing:-0.05em}
+.hero h1 .serif{font-family:var(--body);font-weight:400;font-style:italic;letter-spacing:-0.02em}
+.hero-deck{display:grid;grid-template-columns:1fr 1fr;gap:3rem;margin-top:2rem;padding-top:2rem;border-top:2px solid var(--ink)}
+.hero-deck .lede{font-size:1.15rem;line-height:1.65;color:var(--ink-soft);max-width:28rem}
+.hero-deck .meta{display:grid;gap:0.8rem;align-content:start}
+.hero-deck .meta-item{display:grid;gap:0.1rem}
+.hero-deck .meta-item .label{font-family:var(--display);color:var(--pop);font-size:0.62rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase}
+.hero-deck .meta-item .value{font-family:var(--display);font-size:0.92rem;font-weight:700}
+.hero-actions{display:flex;gap:0.7rem;margin-top:1.5rem}
+
+/* BUTTONS */
+.btn{display:inline-flex;align-items:center;gap:0.4rem;min-height:46px;padding:0 1.3rem;border:2px solid var(--ink);border-radius:0;font-family:var(--display);font-size:0.8rem;font-weight:700;letter-spacing:0.02em;cursor:pointer;transition:all .2s;background:transparent;color:var(--ink)}
+.btn-fill{background:var(--ink);color:var(--bg)}
+.btn:hover{background:var(--ink);color:var(--bg)}
+.btn-pop{border-color:var(--pop);color:var(--pop)}
+.btn-pop:hover{background:var(--pop);color:#fff}
+
+/* SECTIONS */
+.section{padding:clamp(3.5rem,6vw,5rem) 0}
+.section + .section{border-top:1px solid var(--line)}
+.section-label{font-family:var(--display);color:var(--pop);font-size:0.62rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;margin-bottom:1rem}
+.section h2{font-family:var(--display);font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:800;line-height:1;letter-spacing:-0.04em}
+.section h2 .serif{font-family:var(--body);font-weight:400;font-style:italic}
+.section .text{color:var(--muted);font-size:0.96rem;line-height:1.72;max-width:34rem;margin-top:0.6rem}
+
+/* Split */
+.split{display:grid;grid-template-columns:1fr 1fr;gap:3rem}
+
+/* Company cards — magazine index style */
+.company-index{display:grid;gap:0;border-top:2px solid var(--ink)}
+.company-entry{display:grid;grid-template-columns:auto 1fr auto;align-items:baseline;gap:1.5rem;padding:1rem 0;border-bottom:1px solid var(--line);transition:all .2s;cursor:pointer}
+.company-entry:hover{padding-left:0.5rem;background:var(--pop-soft)}
+.company-entry .num{font-family:var(--display);color:var(--pop);font-size:0.68rem;font-weight:700;letter-spacing:0.1em;min-width:2rem}
+.company-entry .info{display:grid;gap:0.1rem}
+.company-entry .name{font-family:var(--display);font-size:1.15rem;font-weight:800;letter-spacing:-0.02em}
+.company-entry .desc{color:var(--muted);font-size:0.84rem;line-height:1.5}
+.company-entry .sector{font-family:var(--display);color:var(--muted);font-size:0.68rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase}
+
+/* Sidebar card */
+.sidebar-card{background:var(--cream);padding:clamp(1.3rem,2.5vw,1.8rem);border-left:3px solid var(--pop)}
+.sidebar-card .label{font-family:var(--display);color:var(--pop);font-size:0.62rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;margin-bottom:0.6rem}
+.sidebar-card h3{font-family:var(--display);font-size:1.15rem;font-weight:800;letter-spacing:-0.02em;line-height:1.15}
+.sidebar-card p{color:var(--muted);font-size:0.9rem;margin-top:0.5rem}
+
+/* Founder */
+.founder-name{font-family:var(--display);font-size:clamp(2.2rem,5vw,3.5rem);font-weight:800;letter-spacing:-0.04em;line-height:0.9}
+.founder-role{font-family:var(--display);color:var(--pop);font-size:0.65rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;margin-top:0.8rem}
+.founder-bio{color:var(--ink-soft);font-size:0.96rem;line-height:1.72;margin-top:1rem}
+.founder-image{background:var(--cream);min-height:400px;display:grid;place-items:center;border-left:3px solid var(--pop)}
+.founder-image span{color:var(--muted);font-family:var(--display);font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase}
+
+/* CTA */
+.cta{background:var(--ink);color:var(--bg);padding:clamp(2.5rem,5vw,4rem);display:grid;grid-template-columns:1fr auto;align-items:center;gap:2rem}
+.cta h2{font-family:var(--display);font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:800;letter-spacing:-0.04em;line-height:0.95}
+.cta p{color:rgba(255,253,248,0.6);font-size:0.9rem;margin-top:0.5rem}
+.cta .btn{border-color:rgba(255,253,248,0.3);color:var(--bg)}
+.cta .btn:hover{background:var(--bg);color:var(--ink)}
+
+/* FOOTER */
+footer{border-top:2px solid var(--ink);padding:2rem 0 1.5rem}
+.footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:2rem}
+.footer-brand{font-family:var(--display);font-size:1rem;font-weight:800}
+.footer-desc{color:var(--muted);font-size:0.82rem;margin-top:0.3rem;line-height:1.55}
+.footer-heading{font-family:var(--display);color:var(--pop);font-size:0.58rem;font-weight:700;letter-spacing:0.13em;text-transform:uppercase;margin-bottom:0.5rem}
+.footer-links{list-style:none;padding:0;display:grid;gap:0.1rem}
+.footer-links a{font-family:var(--display);color:var(--ink-soft);font-size:0.82rem;font-weight:600;min-height:28px;display:inline-flex;align-items:center}
+.footer-base{margin-top:1.5rem;padding-top:1rem;border-top:1px solid var(--line);color:var(--muted);font-size:0.72rem;font-family:var(--display);display:flex;justify-content:space-between}
+
+@media(max-width:900px){.split,.hero-deck,.footer-grid,.cta{grid-template-columns:1fr}.hero h1{font-size:clamp(2.5rem,10vw,3.5rem)}.company-entry{grid-template-columns:auto 1fr}nav{display:none}}
+
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s ease}
+.reveal.visible{opacity:1;transform:none}
+</style>
+</head>
+<body>
+
+<header class="header">
+<div class="container header-inner">
+  <span class="brand">Altcorp</span>
+  <nav>
+    <a href="#" class="nav-active">Home</a>
+    <a href="#">About</a>
+    <a href="#">Companies</a>
+    <a href="#">Leadership</a>
+    <a href="#">Contact</a>
+  </nav>
+</div>
+</header>
+
+<main>
+<div class="container">
+
+<section class="hero reveal">
+  <div class="hero-top">
+    <span class="hero-issue">Parent Company</span>
+    <span class="hero-date">Est. 2024 &middot; India</span>
+  </div>
+  <h1>The company<br>behind the <span class="serif">companies.</span></h1>
+  <div class="hero-deck">
+    <div>
+      <p class="lede">Altcorp brings together a growing group of software businesses, digital platforms, and operating brands across healthcare, media, AI, and consumer internet.</p>
+      <div class="hero-actions">
+        <a class="btn btn-fill" href="#">Explore Companies →</a>
+        <a class="btn" href="#">About Altcorp</a>
+      </div>
+    </div>
+    <div class="meta">
+      <div class="meta-item"><span class="label">Companies</span><span class="value">7 Active Businesses</span></div>
+      <div class="meta-item"><span class="label">Sectors</span><span class="value">Software, AI, Healthcare, Media</span></div>
+      <div class="meta-item"><span class="label">Approach</span><span class="value">Long-term ownership & operations</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="split reveal">
+    <div>
+      <p class="section-label">About</p>
+      <h2>Built to operate <span class="serif">internet businesses</span> over the long term.</h2>
+      <p class="text">Altcorp functions as the parent company and long-term owner of a portfolio of internet-native businesses. Each serves a clearly defined market while sharing infrastructure and strategy.</p>
+    </div>
+    <div class="sidebar-card">
+      <p class="label">Structure</p>
+      <h3>One parent company, multiple specialised businesses.</h3>
+      <p>Altcorp provides ownership, strategic direction, and the operating structure that connects the wider group.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <p class="section-label reveal">Companies</p>
+  <h2 class="reveal" style="margin-bottom:1.5rem">The <span class="serif">portfolio</span></h2>
+  <div class="company-index">
+    <a class="company-entry reveal" href="#"><span class="num">01</span><div class="info"><span class="name">BurnerLinks</span><span class="desc">Self-destructing links for privacy-first sharing</span></div><span class="sector">Software</span></a>
+    <a class="company-entry reveal" href="#"><span class="num">02</span><div class="info"><span class="name">Feedbacks.dev</span><span class="desc">Developer feedback collection and management</span></div><span class="sector">DevTools</span></a>
+    <a class="company-entry reveal" href="#"><span class="num">03</span><div class="info"><span class="name">Supaviewer</span><span class="desc">AI-powered entertainment analytics platform</span></div><span class="sector">Analytics</span></a>
+    <a class="company-entry reveal" href="#"><span class="num">04</span><div class="info"><span class="name">Verified.Doctor</span><span class="desc">Medical professional verification standard</span></div><span class="sector">Healthcare</span></a>
+    <a class="company-entry reveal" href="#"><span class="num">05</span><div class="info"><span class="name">MyGang AI</span><span class="desc">AI-native social and entertainment experiences</span></div><span class="sector">AI / Consumer</span></a>
+    <a class="company-entry reveal" href="#"><span class="num">06</span><div class="info"><span class="name">Ottr Chat</span><span class="desc">Privacy-first modern messaging platform</span></div><span class="sector">Communication</span></a>
+    <a class="company-entry reveal" href="#"><span class="num">07</span><div class="info"><span class="name">AFKNPC</span><span class="desc">Gaming community and ecosystem tools</span></div><span class="sector">Gaming</span></a>
+  </div>
+</section>
+
+<section class="section">
+  <div class="split reveal">
+    <div>
+      <p class="section-label">Founder</p>
+      <h2 class="founder-name">Dr. Syed<br>Irfan</h2>
+      <p class="founder-role">Founder &amp; Group Lead</p>
+      <p class="founder-bio">Oversees Altcorp's group strategy, product direction, and long-term development across all businesses and platforms.</p>
+      <div style="margin-top:1.5rem"><a class="btn btn-pop" href="#">Read More →</a></div>
+    </div>
+    <div class="founder-image"><span>[ Portrait ]</span></div>
+  </div>
+</section>
+
+<section class="section reveal" style="padding-bottom:0">
+  <div class="cta">
+    <div>
+      <h2>Get in touch.</h2>
+      <p>Company enquiries, partnerships, and business discussions.</p>
+    </div>
+    <a class="btn" href="#">Contact Altcorp →</a>
+  </div>
+</section>
+
+</div>
+</main>
+
+<footer>
+<div class="container">
+  <div class="footer-grid">
+    <div><div class="footer-brand">Altcorp</div><p class="footer-desc">Parent company behind software, platforms, and operating brands.</p></div>
+    <div><p class="footer-heading">Pages</p><ul class="footer-links"><li><a href="#">Home</a></li><li><a href="#">About</a></li><li><a href="#">Companies</a></li><li><a href="#">Leadership</a></li><li><a href="#">Contact</a></li></ul></div>
+    <div><p class="footer-heading">Connect</p><ul class="footer-links"><li><a href="mailto:contact@altcorp.in">contact@altcorp.in</a></li><li><a href="#">India</a></li></ul></div>
+  </div>
+  <div class="footer-base"><span>&copy; 2026 Altcorp</span><span>All rights reserved</span></div>
+</div>
+</footer>
+
+<script>
+const els=document.querySelectorAll('.reveal');const obs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target)}})},{threshold:0.1});
+els.forEach((el,i)=>{el.style.transitionDelay=`${(i%6)*50}ms`;if(el.getBoundingClientRect().top<innerHeight*1.2)el.classList.add('visible');else obs.observe(el)});
+</script>
+</body>
+</html>

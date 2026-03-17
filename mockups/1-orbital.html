@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Altcorp — 1: Orbital</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0}
+:root{
+  --bg:#050508;--surface:#0A0A10;--elevated:#111118;
+  --white:#F4F4F8;--ghost:rgba(244,244,248,0.6);--dim:rgba(244,244,248,0.35);
+  --accent:#6C5CE7;--accent2:#00D2FF;--accent3:#FF6B9D;
+  --glow:rgba(108,92,231,0.15);--glow2:rgba(0,210,255,0.1);
+  --line:rgba(244,244,248,0.06);
+  --body:'Space Grotesk',sans-serif;--display:'Outfit',sans-serif;
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--body);color:var(--white);background:var(--bg);line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+.container{width:min(1240px,calc(100vw - 3rem));margin:0 auto}
+
+/* Animated gradient mesh background */
+.mesh-bg{position:fixed;inset:0;z-index:0;pointer-events:none}
+.mesh-bg .orb{position:absolute;border-radius:50%;filter:blur(120px);animation:float 20s ease-in-out infinite}
+.mesh-bg .orb-1{width:600px;height:600px;top:-15%;left:-10%;background:rgba(108,92,231,0.12);animation-delay:0s}
+.mesh-bg .orb-2{width:500px;height:500px;top:30%;right:-10%;background:rgba(0,210,255,0.08);animation-delay:-7s}
+.mesh-bg .orb-3{width:450px;height:450px;bottom:-10%;left:30%;background:rgba(255,107,157,0.06);animation-delay:-14s}
+@keyframes float{0%,100%{transform:translate(0,0) scale(1)}33%{transform:translate(30px,-40px) scale(1.05)}66%{transform:translate(-20px,30px) scale(0.95)}}
+
+/* Grain overlay */
+body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:1;opacity:0.025;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+
+.relative{position:relative;z-index:2}
+
+/* HEADER */
+.header{position:fixed;top:0;left:0;right:0;z-index:90;padding:1rem 0}
+.header-inner{display:flex;align-items:center;gap:2rem;max-width:1240px;margin:0 auto;padding:0.65rem 1rem;width:calc(100% - 3rem);border:1px solid var(--line);border-radius:16px;background:rgba(5,5,8,0.7);backdrop-filter:blur(20px) saturate(1.5)}
+.brand{display:flex;align-items:center;gap:0.8rem}
+.brand-mark{width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,var(--accent),var(--accent2));display:grid;place-items:center;font-family:var(--display);font-weight:800;font-size:1rem;color:var(--bg)}
+.brand-name{font-family:var(--display);font-size:1.1rem;font-weight:800;letter-spacing:-0.04em}
+nav{margin-left:auto;display:flex;gap:0.3rem}
+nav a{color:var(--dim);font-size:0.82rem;font-weight:600;padding:0.4rem 0.7rem;border-radius:8px;transition:all .2s}
+nav a:hover{color:var(--white);background:rgba(244,244,248,0.05)}
+.nav-cta{background:var(--accent)!important;color:var(--white)!important;font-weight:700}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:8rem 0 4rem}
+.hero-label{display:inline-flex;align-items:center;gap:0.6rem;padding:0.4rem 0.9rem;border:1px solid rgba(108,92,231,0.3);border-radius:999px;font-size:0.7rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);margin-bottom:1.5rem;background:rgba(108,92,231,0.06)}
+.hero-label .dot{width:6px;height:6px;border-radius:50%;background:var(--accent2);box-shadow:0 0 8px var(--accent2);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.4}}
+.hero h1{font-family:var(--display);font-size:clamp(3.2rem,8vw,7rem);font-weight:900;line-height:0.9;letter-spacing:-0.05em;max-width:14ch}
+.hero h1 .gradient{background:linear-gradient(135deg,var(--accent),var(--accent2),var(--accent3));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero .sub{color:var(--ghost);font-size:clamp(1rem,1.4vw,1.15rem);line-height:1.7;max-width:32rem;margin-top:1.5rem}
+.hero .actions{display:flex;gap:0.8rem;margin-top:2rem}
+.hero-stats{display:flex;gap:2.5rem;margin-top:3rem;padding-top:2rem;border-top:1px solid var(--line)}
+.hero-stat{display:grid;gap:0.2rem}
+.hero-stat .num{font-family:var(--display);font-size:2rem;font-weight:900;letter-spacing:-0.04em;background:linear-gradient(135deg,var(--white),var(--ghost));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero-stat .label{color:var(--dim);font-size:0.7rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase}
+
+/* BUTTONS */
+.btn{display:inline-flex;align-items:center;gap:0.5rem;min-height:48px;padding:0 1.4rem;border:0;border-radius:12px;font-family:var(--body);font-size:0.88rem;font-weight:700;cursor:pointer;transition:all .2s}
+.btn-glow{color:var(--white);background:var(--accent);box-shadow:0 0 24px rgba(108,92,231,0.3),inset 0 1px 0 rgba(255,255,255,0.15)}
+.btn-glow:hover{box-shadow:0 0 40px rgba(108,92,231,0.5),inset 0 1px 0 rgba(255,255,255,0.15);transform:translateY(-1px)}
+.btn-ghost{color:var(--ghost);background:transparent;border:1px solid rgba(244,244,248,0.1)}
+.btn-ghost:hover{border-color:rgba(244,244,248,0.2);background:rgba(244,244,248,0.03)}
+.btn-arrow::after{content:"\2192";font-size:1.1em}
+
+/* SECTIONS */
+.section{padding:clamp(5rem,10vw,8rem) 0}
+.section-label{color:var(--accent);font-size:0.68rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;margin-bottom:1rem}
+.section h2{font-family:var(--display);font-size:clamp(2.2rem,4.5vw,3.6rem);font-weight:800;line-height:0.95;letter-spacing:-0.04em;max-width:18ch}
+.section .desc{color:var(--ghost);font-size:clamp(0.96rem,1.3vw,1.06rem);line-height:1.7;max-width:36rem;margin-top:0.8rem}
+.section-head{margin-bottom:3rem}
+
+/* BENTO GRID */
+.bento{display:grid;grid-template-columns:repeat(3,1fr);grid-auto-rows:minmax(200px,auto);gap:1rem}
+.bento-card{position:relative;padding:1.5rem;border:1px solid var(--line);border-radius:20px;background:var(--surface);overflow:hidden;transition:all .3s;display:flex;flex-direction:column}
+.bento-card::before{content:"";position:absolute;inset:0;border-radius:20px;opacity:0;transition:opacity .3s;background:radial-gradient(600px circle at var(--mouse-x,50%) var(--mouse-y,50%),rgba(108,92,231,0.06),transparent 40%)}
+.bento-card:hover::before{opacity:1}
+.bento-card:hover{border-color:rgba(108,92,231,0.2);transform:translateY(-2px)}
+.bento-card.span-2{grid-column:span 2}
+.bento-card.tall{grid-row:span 2}
+.bento-card .chip{display:inline-flex;align-items:center;gap:0.4rem;padding:0.3rem 0.6rem;border:1px solid var(--line);border-radius:8px;font-size:0.65rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);width:fit-content;margin-bottom:auto}
+.bento-card h3{font-family:var(--display);font-size:1.5rem;font-weight:800;letter-spacing:-0.03em;margin-top:1rem;line-height:1.1}
+.bento-card .tagline{color:var(--ghost);font-size:0.92rem;font-weight:500;margin-top:0.3rem}
+.bento-card p.body{color:var(--dim);font-size:0.86rem;line-height:1.65;margin-top:0.5rem}
+.bento-card .link{color:var(--accent);font-weight:700;font-size:0.82rem;margin-top:auto;padding-top:1rem;display:inline-flex;align-items:center;gap:0.3rem}
+.bento-card .link::after{content:"\2192";transition:transform .2s}
+.bento-card:hover .link::after{transform:translateX(3px)}
+
+/* Featured card glow */
+.bento-card.featured{background:linear-gradient(135deg,rgba(108,92,231,0.08),rgba(0,210,255,0.04));border-color:rgba(108,92,231,0.15)}
+.bento-card.featured::after{content:"";position:absolute;top:-1px;left:20%;right:20%;height:1px;background:linear-gradient(90deg,transparent,var(--accent),transparent)}
+
+/* FOUNDER */
+.founder-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:center}
+.founder-text{display:grid;gap:1rem}
+.founder-text .name{font-family:var(--display);font-size:clamp(2rem,4vw,3.2rem);font-weight:800;letter-spacing:-0.04em;line-height:0.95}
+.founder-text .role{color:var(--accent);font-size:0.7rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase}
+.founder-text p{color:var(--ghost);font-size:0.96rem;line-height:1.7}
+.founder-visual{height:480px;border-radius:24px;border:1px solid var(--line);background:linear-gradient(160deg,var(--elevated),var(--surface));overflow:hidden;display:grid;place-items:center;position:relative}
+.founder-visual::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%,rgba(108,92,231,0.1),transparent 60%)}
+.founder-visual .placeholder{color:var(--dim);font-size:0.8rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase}
+
+/* CTA */
+.cta-section{position:relative;padding:4rem;border:1px solid var(--line);border-radius:28px;background:var(--surface);overflow:hidden;text-align:center;display:grid;gap:1.5rem;justify-items:center}
+.cta-section::before{content:"";position:absolute;top:-50%;left:50%;transform:translateX(-50%);width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(108,92,231,0.12),transparent 60%);pointer-events:none}
+.cta-section h2{font-family:var(--display);font-size:clamp(2rem,4vw,3rem);font-weight:800;letter-spacing:-0.04em;line-height:0.95;position:relative}
+.cta-section p{color:var(--ghost);font-size:1rem;max-width:28rem;position:relative}
+
+/* FOOTER */
+footer{border-top:1px solid var(--line);padding:3rem 0 2rem}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:2rem}
+.footer-brand{font-family:var(--display);font-size:1.5rem;font-weight:800;letter-spacing:-0.04em}
+.footer-desc{color:var(--dim);font-size:0.85rem;margin-top:0.5rem;max-width:24rem;line-height:1.6}
+.footer-heading{color:var(--dim);font-size:0.65rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;margin-bottom:0.8rem}
+.footer-links{list-style:none;padding:0;display:grid;gap:0.3rem}
+.footer-links a{color:var(--ghost);font-size:0.86rem;font-weight:500;display:inline-flex;min-height:32px;align-items:center;transition:color .2s}
+.footer-links a:hover{color:var(--white)}
+.footer-base{margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--line);color:var(--dim);font-size:0.78rem;display:flex;justify-content:space-between}
+
+@media(max-width:900px){.bento,.founder-grid,.footer-grid{grid-template-columns:1fr}.bento-card.span-2{grid-column:span 1}.hero h1{font-size:clamp(2.4rem,10vw,3.5rem)}.hero-stats{flex-wrap:wrap;gap:1.5rem}nav{display:none}}
+
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1)}
+.reveal.visible{opacity:1;transform:none}
+</style>
+</head>
+<body>
+<div class="mesh-bg"><div class="orb orb-1"></div><div class="orb orb-2"></div><div class="orb orb-3"></div></div>
+
+<header class="header">
+<div class="header-inner">
+  <div class="brand"><div class="brand-mark">A</div><span class="brand-name">Altcorp</span></div>
+  <nav>
+    <a href="#">About</a>
+    <a href="#">Companies</a>
+    <a href="#">Leadership</a>
+    <a href="#" class="nav-cta">Contact</a>
+  </nav>
+</div>
+</header>
+
+<main class="relative">
+<div class="container">
+
+<section class="hero reveal">
+  <div class="hero-label"><span class="dot"></span> Building the future</div>
+  <h1>We build <span class="gradient">companies</span> that build the future.</h1>
+  <p class="sub">Altcorp is the parent company behind a growing portfolio of software businesses, digital platforms, and operating brands — from India to the world.</p>
+  <div class="actions">
+    <button class="btn btn-glow btn-arrow">Explore Companies</button>
+    <button class="btn btn-ghost">Learn More</button>
+  </div>
+  <div class="hero-stats">
+    <div class="hero-stat"><span class="num">7</span><span class="label">Companies</span></div>
+    <div class="hero-stat"><span class="num">4</span><span class="label">Sectors</span></div>
+    <div class="hero-stat"><span class="num">2024</span><span class="label">Founded</span></div>
+  </div>
+</section>
+
+<section class="section reveal">
+  <div class="section-head">
+    <p class="section-label">Portfolio</p>
+    <h2>Companies and platforms under Altcorp.</h2>
+    <p class="desc">Each company serves a distinct market while sharing infrastructure, strategy, and long-term vision.</p>
+  </div>
+  <div class="bento">
+    <article class="bento-card featured span-2 reveal">
+      <span class="chip">Software &middot; Privacy</span>
+      <h3>BurnerLinks</h3>
+      <p class="tagline">Self-destructing links for privacy-first sharing</p>
+      <p class="body">Secure, one-time use links that vanish after first access. Built for people who take privacy seriously.</p>
+      <a class="link" href="#">Explore</a>
+    </article>
+    <article class="bento-card reveal">
+      <span class="chip">AI &middot; Social</span>
+      <h3>MyGang AI</h3>
+      <p class="tagline">AI-native entertainment</p>
+      <a class="link" href="#">Explore</a>
+    </article>
+    <article class="bento-card reveal">
+      <span class="chip">Analytics</span>
+      <h3>Supaviewer</h3>
+      <p class="tagline">Entertainment analytics platform</p>
+      <a class="link" href="#">Explore</a>
+    </article>
+    <article class="bento-card reveal">
+      <span class="chip">DevTools</span>
+      <h3>Feedbacks.dev</h3>
+      <p class="tagline">Developer feedback collection</p>
+      <a class="link" href="#">Explore</a>
+    </article>
+    <article class="bento-card reveal">
+      <span class="chip">Verification</span>
+      <h3>Verified.Doctor</h3>
+      <p class="tagline">Medical professional verification</p>
+      <a class="link" href="#">Explore</a>
+    </article>
+    <article class="bento-card span-2 reveal">
+      <span class="chip">Communication</span>
+      <h3>Ottr Chat</h3>
+      <p class="tagline">Next-gen messaging built for speed and privacy</p>
+      <p class="body">A modern chat platform that puts user privacy first without compromising on the experience.</p>
+      <a class="link" href="#">Explore</a>
+    </article>
+    <article class="bento-card reveal">
+      <span class="chip">Gaming</span>
+      <h3>AFKNPC</h3>
+      <p class="tagline">Gaming community platform</p>
+      <a class="link" href="#">Explore</a>
+    </article>
+  </div>
+</section>
+
+<section class="section">
+  <div class="founder-grid reveal">
+    <div class="founder-text">
+      <p class="section-label">Founder</p>
+      <h2 class="name">Dr. Syed Irfan</h2>
+      <p class="role">Founder &amp; Group Lead</p>
+      <p>Oversees Altcorp's group strategy, product direction, and long-term development across all businesses, products, and platforms.</p>
+      <div><a href="#" class="btn btn-ghost" style="margin-top:0.5rem">Read More →</a></div>
+    </div>
+    <div class="founder-visual">
+      <span class="placeholder">[ Founder Portrait ]</span>
+    </div>
+  </div>
+</section>
+
+<section class="section reveal">
+  <div class="cta-section">
+    <p class="section-label">Contact</p>
+    <h2>Let's build something together.</h2>
+    <p>Company enquiries, partnerships, or questions about any product under Altcorp.</p>
+    <button class="btn btn-glow btn-arrow">Get in Touch</button>
+  </div>
+</section>
+
+</div>
+</main>
+
+<footer class="relative">
+<div class="container">
+  <div class="footer-grid">
+    <div>
+      <div class="footer-brand">Altcorp</div>
+      <p class="footer-desc">The parent company behind software businesses, digital platforms, and operating brands.</p>
+    </div>
+    <div>
+      <p class="footer-heading">Navigate</p>
+      <ul class="footer-links"><li><a href="#">Home</a></li><li><a href="#">About</a></li><li><a href="#">Companies</a></li><li><a href="#">Leadership</a></li><li><a href="#">Contact</a></li></ul>
+    </div>
+    <div>
+      <p class="footer-heading">Connect</p>
+      <ul class="footer-links"><li><a href="mailto:contact@altcorp.in">contact@altcorp.in</a></li><li><a href="#">India</a></li></ul>
+    </div>
+  </div>
+  <div class="footer-base"><span>&copy; 2026 Altcorp</span><span>All rights reserved</span></div>
+</div>
+</footer>
+
+<script>
+document.querySelectorAll('.bento-card').forEach(card=>{card.addEventListener('mousemove',e=>{const r=card.getBoundingClientRect();card.style.setProperty('--mouse-x',e.clientX-r.left+'px');card.style.setProperty('--mouse-y',e.clientY-r.top+'px')})});
+const els=document.querySelectorAll('.reveal');const obs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target)}})},{threshold:0.08});
+els.forEach((el,i)=>{el.style.transitionDelay=`${(i%8)*60}ms`;if(el.getBoundingClientRect().top<innerHeight*1.2)el.classList.add('visible');else obs.observe(el)});
+</script>
+</body>
+</html>

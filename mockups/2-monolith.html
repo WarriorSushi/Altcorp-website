@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Altcorp — 2: Monolith</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0}
+:root{
+  --bg:#000;--surface:#0A0A0A;--elevated:#111;
+  --white:#fff;--ghost:rgba(255,255,255,0.7);--dim:rgba(255,255,255,0.4);
+  --accent:#fff;--line:rgba(255,255,255,0.06);
+  --body:'Inter',sans-serif;
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--body);color:var(--white);background:var(--bg);line-height:1.5;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+.container{width:min(1200px,calc(100vw - 4rem));margin:0 auto}
+
+/* Ultra minimal header — just text */
+.header{position:fixed;top:0;left:0;right:0;z-index:90;padding:1.5rem 0}
+.header-inner{display:flex;align-items:center;gap:2rem;max-width:1200px;margin:0 auto;width:calc(100% - 4rem)}
+.brand-name{font-size:0.88rem;font-weight:800;letter-spacing:0.08em;text-transform:uppercase}
+nav{margin-left:auto;display:flex;gap:1.8rem}
+nav a{color:var(--dim);font-size:0.78rem;font-weight:600;letter-spacing:0.05em;text-transform:uppercase;transition:color .2s}
+nav a:hover{color:var(--white)}
+
+/* HERO — Massive type, nothing else */
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:flex-end;padding:0 0 clamp(4rem,8vw,6rem)}
+.hero h1{font-size:clamp(4rem,12vw,11rem);font-weight:900;line-height:0.85;letter-spacing:-0.06em;text-transform:uppercase}
+.hero h1 .thin{font-weight:400;color:var(--dim)}
+.hero-meta{display:flex;gap:3rem;margin-top:2.5rem;padding-top:2rem;border-top:1px solid var(--line)}
+.hero-meta .item{display:grid;gap:0.15rem}
+.hero-meta .label{color:var(--dim);font-size:0.65rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase}
+.hero-meta .value{font-size:0.88rem;font-weight:700}
+
+/* Horizontal rule accent */
+.divider{width:100%;height:1px;background:var(--line);margin:0}
+
+/* SECTION */
+.section{padding:clamp(4rem,8vw,7rem) 0}
+.section-label{color:var(--dim);font-size:0.62rem;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;margin-bottom:2rem}
+.section h2{font-size:clamp(1.5rem,3vw,2.4rem);font-weight:800;letter-spacing:-0.04em;line-height:1.1;max-width:20ch}
+.section .text{color:var(--ghost);font-size:0.92rem;line-height:1.7;max-width:36rem;margin-top:0.8rem}
+
+/* Split layout */
+.split{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start}
+.split-narrow{grid-template-columns:0.6fr 1fr;gap:3rem}
+
+/* Company list — minimal table style */
+.company-list{display:grid;gap:0}
+.company-row{display:grid;grid-template-columns:2fr 1.5fr 1fr 0.5fr;align-items:center;padding:1.3rem 0;border-bottom:1px solid var(--line);transition:all .3s;cursor:pointer}
+.company-row:hover{padding-left:0.5rem;background:rgba(255,255,255,0.02)}
+.company-row .name{font-size:1.1rem;font-weight:800;letter-spacing:-0.03em}
+.company-row .desc{color:var(--dim);font-size:0.82rem;font-weight:500}
+.company-row .sector{color:var(--dim);font-size:0.7rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase}
+.company-row .arrow{color:var(--dim);font-size:1.2rem;text-align:right;transition:transform .2s}
+.company-row:hover .arrow{transform:translateX(4px);color:var(--white)}
+.company-row:first-child{border-top:1px solid var(--line)}
+.company-header{display:grid;grid-template-columns:2fr 1.5fr 1fr 0.5fr;padding:0 0 0.8rem;color:var(--dim);font-size:0.6rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase}
+
+/* Founder — dramatic */
+.founder{display:grid;grid-template-columns:1fr 1fr;gap:0;min-height:480px}
+.founder-text{display:flex;flex-direction:column;justify-content:center;padding:3rem;border:1px solid var(--line);border-right:0}
+.founder-text h2{font-size:clamp(2rem,4vw,3.2rem);font-weight:900;letter-spacing:-0.05em;line-height:0.9;text-transform:uppercase}
+.founder-text .role{color:var(--dim);font-size:0.68rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;margin-top:1rem}
+.founder-text p{color:var(--ghost);font-size:0.9rem;line-height:1.65;margin-top:1rem}
+.founder-image{border:1px solid var(--line);background:var(--surface);display:grid;place-items:center}
+.founder-image span{color:var(--dim);font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase}
+
+/* CTA */
+.cta{padding:clamp(4rem,8vw,7rem) 0;text-align:center}
+.cta h2{font-size:clamp(3rem,8vw,7rem);font-weight:900;letter-spacing:-0.06em;text-transform:uppercase;line-height:0.85}
+.cta h2 .outline{-webkit-text-stroke:1px var(--white);-webkit-text-fill-color:transparent}
+.cta .sub{color:var(--dim);font-size:0.88rem;margin-top:1.5rem}
+.cta .actions{display:flex;gap:0.8rem;justify-content:center;margin-top:2rem}
+
+/* BTN */
+.btn{display:inline-flex;align-items:center;gap:0.4rem;min-height:44px;padding:0 1.3rem;border:1px solid var(--line);border-radius:0;font-family:var(--body);font-size:0.78rem;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;cursor:pointer;transition:all .2s;background:transparent;color:var(--white)}
+.btn-fill{background:var(--white);color:var(--bg);border-color:var(--white)}
+.btn:hover{background:var(--white);color:var(--bg)}
+
+/* FOOTER */
+footer{border-top:1px solid var(--line);padding:2.5rem 0 1.5rem}
+.footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:2rem}
+.footer-brand{font-size:0.78rem;font-weight:800;letter-spacing:0.08em;text-transform:uppercase}
+.footer-desc{color:var(--dim);font-size:0.78rem;margin-top:0.5rem;line-height:1.55}
+.footer-heading{color:var(--dim);font-size:0.58rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;margin-bottom:0.6rem}
+.footer-links{list-style:none;padding:0;display:grid;gap:0.15rem}
+.footer-links a{color:var(--ghost);font-size:0.8rem;font-weight:500;display:inline-flex;min-height:28px;align-items:center}
+.footer-base{margin-top:2rem;padding-top:1rem;border-top:1px solid var(--line);color:var(--dim);font-size:0.68rem;display:flex;justify-content:space-between}
+
+@media(max-width:900px){.split,.split-narrow,.founder,.footer-grid{grid-template-columns:1fr}.company-row{grid-template-columns:1fr 1fr}.company-header{grid-template-columns:1fr 1fr}.company-row .sector,.company-row .arrow,.company-header span:nth-child(3),.company-header span:nth-child(4){display:none}.hero h1{font-size:clamp(2.8rem,14vw,4rem)}.cta h2{font-size:clamp(2.5rem,12vw,4rem)}.hero-meta{flex-wrap:wrap;gap:1.5rem}nav{display:none}}
+
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s ease}
+.reveal.visible{opacity:1;transform:none}
+</style>
+</head>
+<body>
+
+<header class="header">
+<div class="header-inner">
+  <span class="brand-name">Altcorp</span>
+  <nav>
+    <a href="#">About</a>
+    <a href="#">Companies</a>
+    <a href="#">Leadership</a>
+    <a href="#">Contact</a>
+  </nav>
+</div>
+</header>
+
+<main>
+<div class="container">
+
+<section class="hero">
+  <h1 class="reveal">Alt<span class="thin">corp</span></h1>
+  <div class="hero-meta reveal">
+    <div class="item"><span class="label">Type</span><span class="value">Parent Company</span></div>
+    <div class="item"><span class="label">Companies</span><span class="value">7 Active</span></div>
+    <div class="item"><span class="label">Sectors</span><span class="value">Software, AI, Healthcare, Media</span></div>
+    <div class="item"><span class="label">Base</span><span class="value">India</span></div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section class="section">
+  <div class="split reveal">
+    <div>
+      <p class="section-label">001 / About</p>
+      <h2>Structured to build and operate internet businesses.</h2>
+    </div>
+    <div>
+      <p class="text">Altcorp functions as the parent company and long-term owner of a growing portfolio of internet-native businesses. Each company serves a clearly defined market — from developer tools to consumer entertainment — while sharing infrastructure, strategy, and vision.</p>
+      <p class="text" style="margin-top:1rem">One parent company. Multiple specialised businesses. Long-term orientation.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section class="section">
+  <p class="section-label reveal">002 / Companies</p>
+  <div class="company-header reveal">
+    <span>Company</span><span>Focus</span><span>Sector</span><span></span>
+  </div>
+  <div class="company-list">
+    <a class="company-row reveal" href="#">
+      <span class="name">BurnerLinks</span>
+      <span class="desc">Self-destructing privacy links</span>
+      <span class="sector">Software</span>
+      <span class="arrow">→</span>
+    </a>
+    <a class="company-row reveal" href="#">
+      <span class="name">Feedbacks.dev</span>
+      <span class="desc">Developer feedback collection</span>
+      <span class="sector">DevTools</span>
+      <span class="arrow">→</span>
+    </a>
+    <a class="company-row reveal" href="#">
+      <span class="name">Supaviewer</span>
+      <span class="desc">Entertainment analytics platform</span>
+      <span class="sector">Analytics</span>
+      <span class="arrow">→</span>
+    </a>
+    <a class="company-row reveal" href="#">
+      <span class="name">Verified.Doctor</span>
+      <span class="desc">Medical professional verification</span>
+      <span class="sector">Healthcare</span>
+      <span class="arrow">→</span>
+    </a>
+    <a class="company-row reveal" href="#">
+      <span class="name">MyGang AI</span>
+      <span class="desc">AI-native social experiences</span>
+      <span class="sector">AI / Consumer</span>
+      <span class="arrow">→</span>
+    </a>
+    <a class="company-row reveal" href="#">
+      <span class="name">Ottr Chat</span>
+      <span class="desc">Privacy-first messaging</span>
+      <span class="sector">Communication</span>
+      <span class="arrow">→</span>
+    </a>
+    <a class="company-row reveal" href="#">
+      <span class="name">AFKNPC</span>
+      <span class="desc">Gaming community platform</span>
+      <span class="sector">Gaming</span>
+      <span class="arrow">→</span>
+    </a>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section class="section">
+  <div class="founder reveal">
+    <div class="founder-text">
+      <p class="section-label">003 / Leadership</p>
+      <h2>Dr. Syed Irfan</h2>
+      <p class="role">Founder &amp; Group Lead</p>
+      <p>Oversees Altcorp's group strategy, product direction, and long-term development across all businesses and platforms.</p>
+      <div style="margin-top:1.5rem"><a class="btn" href="#">Read More →</a></div>
+    </div>
+    <div class="founder-image"><span>[ Portrait ]</span></div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section class="cta reveal">
+  <h2>Get in<br><span class="outline">Touch</span></h2>
+  <p class="sub">Company enquiries, partnerships, and business discussions.</p>
+  <div class="actions">
+    <a class="btn btn-fill" href="#">Contact Altcorp →</a>
+    <a class="btn" href="mailto:contact@altcorp.in">contact@altcorp.in</a>
+  </div>
+</section>
+
+</div>
+</main>
+
+<footer>
+<div class="container">
+  <div class="footer-grid">
+    <div>
+      <div class="footer-brand">Altcorp</div>
+      <p class="footer-desc">Parent company behind software, platforms, and operating brands.</p>
+    </div>
+    <div>
+      <p class="footer-heading">Pages</p>
+      <ul class="footer-links"><li><a href="#">Home</a></li><li><a href="#">About</a></li><li><a href="#">Companies</a></li><li><a href="#">Leadership</a></li><li><a href="#">Contact</a></li></ul>
+    </div>
+    <div>
+      <p class="footer-heading">Connect</p>
+      <ul class="footer-links"><li><a href="mailto:contact@altcorp.in">contact@altcorp.in</a></li><li><a href="#">India</a></li></ul>
+    </div>
+  </div>
+  <div class="footer-base"><span>&copy; 2026 Altcorp</span><span>All rights reserved</span></div>
+</div>
+</footer>
+
+<script>
+const els=document.querySelectorAll('.reveal');const obs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target)}})},{threshold:0.1});
+els.forEach((el,i)=>{el.style.transitionDelay=`${(i%6)*50}ms`;if(el.getBoundingClientRect().top<innerHeight*1.2)el.classList.add('visible');else obs.observe(el)});
+</script>
+</body>
+</html>
