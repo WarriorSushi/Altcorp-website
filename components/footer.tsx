@@ -4,7 +4,7 @@ import { navigation, companies, contact } from "@/lib/data";
 export function Footer() {
   return (
     <footer className="border-t border-[var(--line)]" style={{ paddingTop: "4rem", paddingBottom: "3rem" }}>
-      <div className="max-w-[1200px] mx-auto px-5 sm:px-8 w-full">
+      <div className="max-w-[1200px] mx-auto px-6 sm:px-8 w-full">
         <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-[1.5fr_1fr_1fr_1fr] gap-8 sm:gap-10">
           {/* Brand */}
           <div className="col-span-2 md:col-span-1">
