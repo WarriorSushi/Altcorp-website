@@ -17,7 +17,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en" className={geist.variable}>
       <body className="font-[family-name:var(--font-geist)]">
         <Header />
-        <main>{children}</main>
+        {children}
         <Footer />
         <Grain />
       </body>

@@ -48,7 +48,7 @@ export function Header() {
             ))}
           </nav>
           <button
-            className="ml-auto md:hidden flex flex-col gap-[5px] p-2"
+            className="ml-auto md:hidden flex flex-col gap-[5px] p-2 -mr-2"
             onClick={() => setMobileOpen(true)}
             aria-label="Open menu"
           >

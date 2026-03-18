@@ -29,7 +29,7 @@ export function CompanyRow({ name, description, sector, href, delay = 0 }: Compa
             cursor: "pointer",
           }}
           whileHover={{
-            paddingLeft: 16,
+            x: 16,
             backgroundColor: "rgba(167,139,250,0.02)",
           }}
           transition={{ duration: 0.25, ease: "easeOut" }}

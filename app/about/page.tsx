@@ -28,7 +28,7 @@ const structureCards = [
 
 export default function AboutPage() {
   return (
-    <>
+    <main>
       {/* Page Hero */}
       <section
         className="container"
@@ -122,6 +122,6 @@ export default function AboutPage() {
           </div>
         </Reveal>
       </section>
-    </>
+    </main>
   );
 }

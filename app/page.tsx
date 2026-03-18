@@ -50,7 +50,9 @@ export default function Home() {
         </div>
       </section>
 
-      <SectionDivider />
+      <div className="container">
+        <SectionDivider />
+      </div>
 
       {/* ── 001 / About ── */}
       <section className="container section-padding">
@@ -81,7 +83,9 @@ export default function Home() {
         </Reveal>
       </section>
 
-      <SectionDivider />
+      <div className="container">
+        <SectionDivider />
+      </div>
 
       {/* ── 002 / Companies ── */}
       <section id="companies" className="container section-padding">
@@ -95,7 +99,7 @@ export default function Home() {
             style={{
               display: "grid",
               padding: "0.8rem 0",
-              fontSize: "0.55rem",
+              fontSize: "0.65rem",
               textTransform: "uppercase",
               letterSpacing: "0.14em",
               color: "var(--dim)",
@@ -121,7 +125,9 @@ export default function Home() {
         ))}
       </section>
 
-      <SectionDivider />
+      <div className="container">
+        <SectionDivider />
+      </div>
 
       {/* ── 003 / Leadership ── */}
       <section className="container section-padding">
@@ -159,7 +165,9 @@ export default function Home() {
         </Reveal>
       </section>
 
-      <SectionDivider />
+      <div className="container">
+        <SectionDivider />
+      </div>
 
       {/* ── CTA ── */}
       <section className="container" style={{ padding: "clamp(4rem, 10vw, 8rem) 0", textAlign: "center" }}>

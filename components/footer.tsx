@@ -25,7 +25,7 @@ export function Footer() {
               <li>
                 <Link
                   href="/"
-                  className="text-[var(--ghost)] text-[0.78rem] font-[500] inline-flex min-h-[28px] items-center hover:text-white transition-colors"
+                  className="text-[var(--ghost)] text-[0.78rem] font-[500] inline-flex min-h-[44px] items-center hover:text-white transition-colors"
                 >
                   Home
                 </Link>
@@ -34,7 +34,7 @@ export function Footer() {
                 <li key={item.href}>
                   <Link
                     href={item.href}
-                    className="text-[var(--ghost)] text-[0.78rem] font-[500] inline-flex min-h-[28px] items-center hover:text-white transition-colors"
+                    className="text-[var(--ghost)] text-[0.78rem] font-[500] inline-flex min-h-[44px] items-center hover:text-white transition-colors"
                   >
                     {item.label}
                   </Link>
@@ -53,7 +53,7 @@ export function Footer() {
                 <li key={c.slug}>
                   <Link
                     href={`/companies/${c.slug}`}
-                    className="text-[var(--ghost)] text-[0.78rem] font-[500] inline-flex min-h-[28px] items-center hover:text-white transition-colors"
+                    className="text-[var(--ghost)] text-[0.78rem] font-[500] inline-flex min-h-[44px] items-center hover:text-white transition-colors"
                   >
                     {c.name}
                   </Link>
@@ -71,13 +71,13 @@ export function Footer() {
               <li>
                 <a
                   href={`mailto:${contact.email}`}
-                  className="text-[var(--ghost)] text-[0.78rem] font-[500] inline-flex min-h-[28px] items-center hover:text-white transition-colors"
+                  className="text-[var(--ghost)] text-[0.78rem] font-[500] inline-flex min-h-[44px] items-center hover:text-white transition-colors"
                 >
                   {contact.email}
                 </a>
               </li>
               <li>
-                <span className="text-[var(--ghost)] text-[0.78rem] font-[500] inline-flex min-h-[28px] items-center">
+                <span className="text-[var(--ghost)] text-[0.78rem] font-[500] inline-flex min-h-[44px] items-center">
                   {contact.location}
                 </span>
               </li>

@@ -85,7 +85,7 @@ img { display: block; max-width: 100%; }
 .meta-label {
   display: block;
   color: var(--dim);
-  font-size: 0.6rem;
+  font-size: 0.65rem;
   text-transform: uppercase;
   letter-spacing: 0.14em;
   margin-bottom: 0.35rem;
@@ -101,7 +101,7 @@ img { display: block; max-width: 100%; }
 /* ── Section labels ── */
 .section-label {
   color: var(--dim);
-  font-size: 0.58rem;
+  font-size: 0.65rem;
   text-transform: uppercase;
   letter-spacing: 0.18em;
   margin-bottom: 1.5rem;
@@ -208,6 +208,13 @@ img { display: block; max-width: 100%; }
 .feature-card:hover {
   border-color: rgba(167,139,250,0.15) !important;
   background: rgba(167,139,250,0.03) !important;
+}
+
+/* ── Forms ── */
+input:focus, textarea:focus {
+  border-color: rgba(255,255,255,0.3) !important;
+  outline: 2px solid rgba(167,139,250,0.4);
+  outline-offset: 1px;
 }
 
 /* ── Responsive ── */

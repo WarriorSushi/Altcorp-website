@@ -33,7 +33,7 @@ export default async function CompanyPage({ params }: Props) {
   const next = idx < companies.length - 1 ? companies[idx + 1] : null;
 
   return (
-    <>
+    <main>
       {/* Hero */}
       <section
         className="container"
@@ -158,6 +158,6 @@ export default async function CompanyPage({ params }: Props) {
           </div>
         </Reveal>
       </section>
-    </>
+    </main>
   );
 }
