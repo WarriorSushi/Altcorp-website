@@ -19,7 +19,6 @@ export function CompanyRow({ name, description, sector, href, delay = 0 }: Compa
       <Link href={href}>
         <motion.div
           className="company-row"
-          className="company-row"
           style={{
             display: "grid",
             alignItems: "center",
