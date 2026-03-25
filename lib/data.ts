@@ -6,19 +6,19 @@ export interface Company {
   tagline: string;
   longDescription: string;
   features: string[];
-  status: "Live" | "In Development" | "Beta";
+  status: "Operating";
   url?: string;
 }
 
 export const companies: Company[] = [
   {
     name: "BurnerLinks",
-    description: "Self-destructing privacy links",
-    sector: "Software",
+    description: "Secure file and link distribution",
+    sector: "Security Software",
     slug: "burnerlinks",
-    tagline: "Share links that vanish after use.",
+    tagline: "Secure sharing built around controlled access and expiry.",
     longDescription:
-      "BurnerLinks is a privacy-first link sharing tool that creates self-destructing URLs. Whether sharing passwords, confidential documents, or sensitive information, each link expires after a set number of views or a time limit — leaving no trace behind. Built for security-conscious professionals and teams who need to share without risk.",
+      "BurnerLinks is a privacy-first sharing product designed for controlled distribution of files, passwords, and sensitive information. Links can expire by time or view count, helping individuals and teams share confidential material with greater control and lower operational risk.",
     features: [
       "One-time view links that self-destruct after opening",
       "Configurable expiry by time or view count",
@@ -26,17 +26,17 @@ export const companies: Company[] = [
       "No account required — instant link creation",
       "Custom branding options for teams and businesses",
     ],
-    status: "Live",
+    status: "Operating",
     url: "https://burnerlinks.com",
   },
   {
     name: "Feedbacks.dev",
-    description: "Developer feedback collection",
-    sector: "DevTools",
+    description: "Structured customer feedback management",
+    sector: "Developer Software",
     slug: "feedbacks-dev",
-    tagline: "Ship better software with structured feedback.",
+    tagline: "Structured feedback collection for product teams.",
     longDescription:
-      "Feedbacks.dev is a lightweight developer tool for collecting, organising, and acting on user feedback. Designed for indie developers and small teams who want to understand what users actually need — without bloated project management tools. Embed a feedback widget in your app, collect structured feature requests, and prioritise what to build next.",
+      "Feedbacks.dev is a product feedback platform built for founders, teams, and software companies that need clearer customer signals. It is designed to collect, organise, and prioritise feedback in a more structured way, helping teams convert user input into better product decisions.",
     features: [
       "Embeddable feedback widget for any web app",
       "Structured categorisation — bugs, features, improvements",
@@ -44,17 +44,17 @@ export const companies: Company[] = [
       "Integrations with GitHub, Linear, and Slack",
       "Analytics dashboard for feedback trends",
     ],
-    status: "In Development",
+    status: "Operating",
     url: "https://feedbacks.dev",
   },
   {
     name: "Supaviewer",
-    description: "Entertainment analytics platform",
-    sector: "Analytics",
+    description: "Media intelligence and distribution platform",
+    sector: "Media Technology",
     slug: "supaviewer",
-    tagline: "Data-driven insights for entertainment and media.",
+    tagline: "Audience, performance, and distribution intelligence for media.",
     longDescription:
-      "Supaviewer is an analytics platform purpose-built for the entertainment industry. It tracks audience engagement, content performance, and viewership trends across multiple distribution channels. From streaming platforms to social media, Supaviewer gives creators and studios the data they need to understand what resonates with their audience.",
+      "Supaviewer is a media intelligence platform designed for digital entertainment, audience analytics, and distribution visibility. It brings together performance signals across channels and helps creators, studios, and media operators understand audience behaviour, content performance, and reach.",
     features: [
       "Multi-platform audience analytics in one dashboard",
       "Content performance scoring and benchmarking",
@@ -62,7 +62,7 @@ export const companies: Company[] = [
       "Trend forecasting for upcoming content genres",
       "Custom reporting for studios and production houses",
     ],
-    status: "Beta",
+    status: "Operating",
   },
   {
     name: "Verified.Doctor",
@@ -79,17 +79,17 @@ export const companies: Company[] = [
       "Hospital and clinic onboarding verification workflows",
       "Patient-facing trust badges and verification pages",
     ],
-    status: "In Development",
+    status: "Operating",
     url: "https://verified.doctor",
   },
   {
     name: "MyGang AI",
-    description: "AI-native social experiences",
-    sector: "AI / Consumer",
+    description: "AI-native social interaction platform",
+    sector: "AI Platforms",
     slug: "mygang-ai",
-    tagline: "Your AI crew. Always there for you.",
+    tagline: "Group-based AI interaction designed as a social product.",
     longDescription:
-      "MyGang AI is an AI-native social platform that reimagines companionship and entertainment. Users create and interact with AI characters that have distinct personalities, memories, and evolving relationships. Whether it's a witty best friend, a study partner, or a creative collaborator — MyGang brings AI companions to life with emotional depth and genuine personality.",
+      "MyGang AI is a consumer platform built around multi-agent social interaction. It is designed as a group-based AI product in which users engage with multiple AI personalities inside a shared environment, creating a more social and layered interaction model than a one-to-one assistant.",
     features: [
       "Create custom AI characters with unique personalities",
       "Persistent memory — characters remember your conversations",
@@ -97,17 +97,17 @@ export const companies: Company[] = [
       "Character marketplace to discover community creations",
       "Voice and image interactions beyond text",
     ],
-    status: "In Development",
+    status: "Operating",
     url: "https://mygang.ai",
   },
   {
     name: "Ottr Chat",
-    description: "Privacy-first messaging",
-    sector: "Communication",
+    description: "Private communication platform",
+    sector: "Communications",
     slug: "ottr-chat",
-    tagline: "Messaging that puts privacy first.",
+    tagline: "Private messaging built around focused communication.",
     longDescription:
-      "Ottr Chat is a privacy-first messaging platform built for users who value security without compromising on experience. Every message is end-to-end encrypted by default. With disappearing messages, anonymous sign-up, and zero data collection, Ottr Chat is the messaging app for people who believe private conversations should stay private.",
+      "Ottr Chat is a private messaging platform built around secure, focused communication. It is designed for users who want stronger privacy controls, a cleaner messaging experience, and communication products that are not built around public feeds or advertising incentives.",
     features: [
       "End-to-end encryption on all messages by default",
       "Disappearing messages with customisable timers",
@@ -115,16 +115,16 @@ export const companies: Company[] = [
       "Zero data collection or ad tracking",
       "Group chats with the same privacy guarantees",
     ],
-    status: "In Development",
+    status: "Operating",
   },
   {
     name: "AFKNPC",
-    description: "Gaming community platform",
-    sector: "Gaming",
+    description: "Persistent gaming and community infrastructure",
+    sector: "Gaming Platforms",
     slug: "afknpc",
-    tagline: "The home base for gamers.",
+    tagline: "Persistent systems for online games and player communities.",
     longDescription:
-      "AFKNPC is a gaming community platform that connects players, content creators, and teams. Find your next squad, share highlights, track stats, and engage with a community built by gamers, for gamers. Whether you're a casual player or a competitive grinder, AFKNPC gives you the tools and community to level up your gaming experience.",
+      "AFKNPC is a gaming platform focused on persistent online systems, community infrastructure, and player engagement. It is positioned around the idea that modern game ecosystems require stronger tools for interaction, continuity, and community participation beyond isolated play sessions.",
     features: [
       "Squad finder with skill-based matchmaking",
       "Game clip sharing and highlight reels",
@@ -132,16 +132,16 @@ export const companies: Company[] = [
       "Community forums and team management tools",
       "Creator profiles with audience engagement tools",
     ],
-    status: "In Development",
+    status: "Operating",
   },
 ];
 
 export const founder = {
   name: "Dr. Syed Irfan",
-  role: "Founder & Group Lead",
-  bio: "Oversees Altcorp's group strategy, product direction, and long-term development across all businesses and platforms.",
+  role: "Founder and Group Lead",
+  bio: "Responsible for Altcorp's group strategy, operating direction, and long-term development across its businesses and platforms.",
   extendedBio:
-    "Dr. Syed Irfan is the founder of Altcorp and oversees its group strategy, product direction, and long-term development. His work centres on building and operating software companies, digital products, and category-specific platforms under the Altcorp umbrella.",
+    "Dr. Syed Irfan is the founder of Altcorp and leads the group across strategy, product direction, and long-term operating development. His work is focused on building and managing software businesses, digital products, and category-specific platforms under the Altcorp umbrella.",
   image: "/founder.webp",
 };
 

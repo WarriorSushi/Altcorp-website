@@ -5,7 +5,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "About — Altcorp",
   description:
-    "Altcorp is the parent company behind a growing group of software businesses, products, and platforms.",
+    "Altcorp is the parent company behind software businesses, products, and platforms.",
 };
 
 const structureCards = [
@@ -29,22 +29,18 @@ const structureCards = [
 export default function AboutPage() {
   return (
     <main>
-      {/* Page Hero */}
-      <section
-        className="container"
-        style={{ paddingTop: "clamp(8rem, 14vw, 12rem)" }}
-      >
+      <section className="container page-intro">
         <Reveal>
-          <p className="section-label">
-            About
-          </p>
-          <h1 className="text-[clamp(1.8rem,4vw,3.2rem)] font-black uppercase tracking-[-0.05em] leading-[0.95] max-w-[20ch]">
-            The parent company behind software, platforms, and operating brands.
-          </h1>
-          <p className="body-text mt-4">
-            Altcorp is the parent company behind a growing group of software
-            businesses, products, and platforms.
-          </p>
+          <div className="page-intro__content">
+            <p className="section-label">About</p>
+            <h1 className="page-intro__title">
+              The parent company behind software, platforms, and operating brands.
+            </h1>
+            <p className="body-text page-intro__body">
+              Altcorp is the parent company behind software businesses,
+              specialist digital products, and category-specific platforms.
+            </p>
+          </div>
         </Reveal>
       </section>
 
@@ -55,22 +51,20 @@ export default function AboutPage() {
       {/* Content Section */}
       <section className="container pb-10 sm:pb-16">
         <Reveal>
-          <div className="split-grid items-start">
+          <div className="split-grid split-grid--balanced items-start">
             {/* Left — rich text */}
             <div className="space-y-5">
               <p className="body-text">
-                Altcorp functions as the parent company and long-term owner of a
-                growing portfolio of internet-native businesses. Each company
-                within the group serves a clearly defined market — from
-                professional compliance tools to consumer entertainment — while
-                sharing common infrastructure, strategic direction, and operating
-                principles.
+                Altcorp functions as the long-term parent company for software
+                businesses, digital products, and specialist platforms. Each
+                company within the group serves a clearly defined market while
+                operating within a broader ownership and strategy framework.
               </p>
               <p className="body-text">
                 The group brings together companies, products, and specialist
                 platforms under one operating structure. Each business is
-                designed to serve a specific audience and market while benefiting
-                from shared ownership.
+                built for a specific audience while benefiting from shared
+                ownership, continuity, and operating alignment.
               </p>
             </div>
 
@@ -101,12 +95,10 @@ export default function AboutPage() {
       {/* Meta Section */}
       <section className="container py-10 sm:py-16">
         <Reveal>
-          <div className="split-grid items-start">
+          <div className="section-intro">
             <div>
-              <p className="section-label">
-                Structure
-              </p>
-              <h2 className="section-heading max-w-[20ch]">
+              <p className="section-label">Structure</p>
+              <h2 className="section-heading section-heading--wide">
                 One parent company, multiple specialised businesses.
               </h2>
             </div>

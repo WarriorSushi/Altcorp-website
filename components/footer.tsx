@@ -4,15 +4,26 @@ import { navigation, companies, contact } from "@/lib/data";
 export function Footer() {
   return (
     <footer className="border-t border-[var(--line)]" style={{ paddingTop: "4rem", paddingBottom: "3rem" }}>
-      <div className="max-w-[1200px] mx-auto px-8 w-full">
+      <div className="max-w-[1280px] mx-auto px-5 sm:px-8 w-full">
         <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-[1.5fr_1fr_1fr_1fr] gap-8 sm:gap-10">
           {/* Brand */}
           <div className="col-span-2 md:col-span-1">
-            <div className="text-[0.82rem] font-[900] tracking-[0.08em] uppercase">
-              Altcorp
+            <div className="flex items-center gap-3">
+              <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-[rgba(167,139,250,0.22)] bg-[rgba(167,139,250,0.08)]">
+                <span className="h-3 w-3 rounded-full bg-[var(--accent)] shadow-[0_0_28px_rgba(167,139,250,0.45)]" />
+              </span>
+              <div>
+                <div className="text-[0.92rem] font-[800] tracking-[-0.03em]">
+                  Altcorp
+                </div>
+                <div className="text-[0.58rem] uppercase tracking-[0.16em] text-[var(--dim)] mt-1">
+                  Parent Company
+                </div>
+              </div>
             </div>
             <p className="text-[var(--dim)] text-[0.78rem] mt-3 leading-relaxed max-w-[22rem]">
-              The parent company behind software products, digital platforms, and operating brands across multiple sectors.
+              The parent company behind software businesses, digital products,
+              and operating brands across multiple sectors.
             </p>
           </div>
 
@@ -88,7 +99,7 @@ export function Footer() {
         {/* Base row */}
         <div className="mt-10 pt-5 border-t border-[var(--line)] text-[var(--dim)] text-[0.62rem] flex justify-between tracking-[0.05em]">
           <span>&copy; {new Date().getFullYear()} Altcorp. All rights reserved.</span>
-          <span className="hidden sm:inline">Built with purpose.</span>
+          <span className="hidden sm:inline">Parent company. India.</span>
         </div>
       </div>
     </footer>

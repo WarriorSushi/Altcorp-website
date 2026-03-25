@@ -5,7 +5,7 @@ import { contact } from "@/lib/data";
 
 export const metadata = {
   title: "Contact — Altcorp",
-  description: "Get in touch with Altcorp.",
+  description: "Contact Altcorp regarding company, product, or business enquiries.",
 };
 
 const infoCards = [
@@ -17,21 +17,18 @@ const infoCards = [
 export default function ContactPage() {
   return (
     <main>
-      {/* Hero */}
-      <section
-        className="container"
-        style={{ paddingTop: "clamp(8rem, 14vw, 12rem)", paddingBottom: "clamp(3rem, 6vw, 5rem)" }}
-      >
+      <section className="container page-intro">
         <Reveal>
-          <p className="section-label">
-            Contact
-          </p>
-          <h1 className="text-[clamp(2rem,5vw,4rem)] font-black uppercase tracking-[-0.05em] leading-none">
-            Get in touch
-          </h1>
-          <p className="body-text mt-3">
-            Reach out regarding Altcorp, one of its companies, or a business enquiry related to the group.
-          </p>
+          <div className="page-intro__content">
+            <p className="section-label">Contact</p>
+            <h1 className="page-intro__title">
+              Contact Altcorp
+            </h1>
+            <p className="body-text page-intro__body">
+              Reach out regarding Altcorp, one of its companies, or a business
+              enquiry related to the group.
+            </p>
+          </div>
         </Reveal>
       </section>
 
@@ -51,7 +48,7 @@ export default function ContactPage() {
               {infoCards.map((card) => (
                 <div
                   key={card.label}
-                  className="py-4 border-b border-[var(--line)]"
+                  className="py-5 border-b border-[var(--line)]"
                 >
                   <p className="section-label mb-1">
                     {card.label}

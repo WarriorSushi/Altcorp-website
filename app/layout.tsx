@@ -10,6 +10,9 @@ const geist = Geist({ subsets: ["latin"], variable: "--font-geist" });
 export const metadata: Metadata = {
   title: "Altcorp — Companies, Products, and Platforms",
   description: "The parent company behind software products, digital platforms, and operating brands.",
+  icons: {
+    icon: "/logo.png",
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

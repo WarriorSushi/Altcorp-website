@@ -34,11 +34,7 @@ export default async function CompanyPage({ params }: Props) {
 
   return (
     <main>
-      {/* Hero */}
-      <section
-        className="container"
-        style={{ paddingTop: "clamp(8rem, 14vw, 12rem)", paddingBottom: "clamp(3rem, 6vw, 5rem)" }}
-      >
+      <section className="container page-intro">
         <Reveal>
           <div className="flex items-center gap-3 mb-6">
             <span className="inline-block px-3 py-1 text-[0.6rem] font-bold uppercase tracking-[0.14em] border border-[var(--line)] text-[var(--dim)]">
@@ -48,33 +44,19 @@ export default async function CompanyPage({ params }: Props) {
               className="inline-block px-3 py-1 text-[0.6rem] font-bold uppercase tracking-[0.14em]"
               style={{
                 background:
-                  company.status === "Live"
-                    ? "rgba(52,211,153,0.12)"
-                    : company.status === "Beta"
-                      ? "rgba(251,191,36,0.12)"
-                      : "rgba(147,130,220,0.12)",
+                  "rgba(52,211,153,0.12)",
                 color:
-                  company.status === "Live"
-                    ? "#34d399"
-                    : company.status === "Beta"
-                      ? "#fbbf24"
-                      : "#9382dc",
-                border: `1px solid ${
-                  company.status === "Live"
-                    ? "rgba(52,211,153,0.2)"
-                    : company.status === "Beta"
-                      ? "rgba(251,191,36,0.2)"
-                      : "rgba(147,130,220,0.2)"
-                }`,
+                  "#34d399",
+                border: "1px solid rgba(52,211,153,0.2)",
               }}
             >
               {company.status}
             </span>
           </div>
-          <h1 className="text-[clamp(2.5rem,6vw,4.5rem)] font-black uppercase tracking-[-0.05em] leading-[0.9]">
+          <h1 className="page-intro__title page-intro__title--company">
             {company.name}
           </h1>
-          <p className="text-[clamp(1rem,2vw,1.3rem)] text-[var(--ghost)] mt-4 max-w-[36rem] leading-relaxed font-light">
+          <p className="text-[clamp(1rem,2vw,1.18rem)] text-[var(--ghost)] mt-4 max-w-[40rem] leading-relaxed">
             {company.tagline}
           </p>
           {company.url && (
@@ -95,11 +77,11 @@ export default async function CompanyPage({ params }: Props) {
       {/* Overview */}
       <section className="container section-padding">
         <Reveal>
-          <div className="split-grid">
+          <div className="section-intro">
             <div>
               <p className="section-label">Overview</p>
-              <h2 className="section-heading">
-                What is {company.name}?
+              <h2 className="section-heading section-heading--wide">
+                Company overview
               </h2>
             </div>
             <div>
@@ -146,7 +128,7 @@ export default async function CompanyPage({ params }: Props) {
               <div className="hidden sm:block" />
             )}
             <Link href="/#companies" className="btn">
-              All Companies
+              Back to Companies
             </Link>
             {next ? (
               <Link href={`/companies/${next.slug}`} className="btn">
