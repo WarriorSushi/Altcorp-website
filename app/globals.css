@@ -810,6 +810,16 @@ input:focus, textarea:focus {
 
 /* Mobile */
 @media (max-width: 640px) {
+  .container {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+
+  .page-intro {
+    padding-top: 7.25rem;
+    padding-bottom: 2.5rem;
+  }
+
   .hero {
     min-height: 100svh;
   }
@@ -830,6 +840,15 @@ input:focus, textarea:focus {
   .body-text {
     font-size: 0.97rem;
     line-height: 1.72;
+  }
+
+  .section-intro,
+  .split-grid,
+  .company-summary,
+  .leadership-spotlight,
+  .page-intro__split,
+  .contact-layout {
+    gap: 1.5rem;
   }
 
   .company-header .company-desc,
@@ -862,11 +881,24 @@ input:focus, textarea:focus {
     bottom: 1rem;
   }
 
+  .about-card,
+  .about-principles__card,
+  .leadership-note,
+  .contact-info-card,
+  .company-summary__card {
+    padding: 1.15rem;
+  }
+
   .contact-form-shell,
   .about-page-intro__panel,
   .contact-page-intro__panel,
   .company-page-hero__panel {
-    padding: 1.15rem;
+    padding: 1.25rem;
+  }
+
+  .page-intro__content,
+  .company-page-hero__content {
+    min-width: 0;
   }
 
   .cta-outline {
