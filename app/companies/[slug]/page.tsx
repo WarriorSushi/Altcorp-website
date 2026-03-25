@@ -4,6 +4,7 @@ import Link from "next/link";
 import { Reveal } from "@/components/reveal";
 import { SectionDivider } from "@/components/section-divider";
 import type { Metadata } from "next";
+import type { CSSProperties } from "react";
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -31,9 +32,15 @@ export default async function CompanyPage({ params }: Props) {
   const idx = companies.findIndex((c) => c.slug === slug);
   const prev = idx > 0 ? companies[idx - 1] : null;
   const next = idx < companies.length - 1 ? companies[idx + 1] : null;
+  const pageTheme = {
+    "--company-accent": company.theme.accent,
+    "--company-accent-soft": company.theme.accentSoft,
+    "--company-accent-glow": company.theme.accentGlow,
+    "--company-panel-tint": company.theme.panelTint,
+  } as CSSProperties;
 
   return (
-    <main>
+    <main className="company-page" style={pageTheme}>
       <section className="container page-intro company-page-hero">
         <Reveal>
           <div className="company-page-hero__grid">
@@ -45,6 +52,10 @@ export default async function CompanyPage({ params }: Props) {
                 <span className="company-badge company-badge--positive">
                   {company.status}
                 </span>
+              </div>
+              <div className="company-page-hero__sector-line">
+                <span className="company-page-hero__sector-mark">{company.theme.code}</span>
+                <span className="company-page-hero__sector-name">{company.sector}</span>
               </div>
               <h1 className="page-intro__title page-intro__title--company">
                 {company.name}
@@ -73,6 +84,10 @@ export default async function CompanyPage({ params }: Props) {
             </div>
 
             <div className="company-page-hero__panel">
+              <div className="company-page-hero__panel-head">
+                <span className="meta-label">Sector</span>
+                <span className="company-page-hero__panel-code">{company.theme.code}</span>
+              </div>
               <div className="company-page-hero__panel-grid">
                 <div className="company-detail-item">
                   <span className="meta-label">Operating Model</span>
@@ -108,7 +123,7 @@ export default async function CompanyPage({ params }: Props) {
                 Company overview
               </h2>
             </div>
-            <div>
+            <div className="company-overview__body">
               <p className="body-text">{company.longDescription}</p>
             </div>
           </div>

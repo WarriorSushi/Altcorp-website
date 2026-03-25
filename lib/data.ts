@@ -10,6 +10,13 @@ export interface Company {
   primaryMarket: string;
   features: string[];
   status: "Operating";
+  theme: {
+    accent: string;
+    accentSoft: string;
+    accentGlow: string;
+    panelTint: string;
+    code: string;
+  };
   url?: string;
 }
 
@@ -26,6 +33,13 @@ export const companies: Company[] = [
       "A security software product positioned around controlled digital distribution, expiry-based access, and lower-risk handling of confidential material.",
     operatingModel: "Security SaaS",
     primaryMarket: "Professionals, teams, and privacy-sensitive workflows",
+    theme: {
+      accent: "#4fd1a5",
+      accentSoft: "rgba(79, 209, 165, 0.12)",
+      accentGlow: "rgba(79, 209, 165, 0.28)",
+      panelTint: "rgba(79, 209, 165, 0.08)",
+      code: "SEC",
+    },
     features: [
       "One-time view links that self-destruct after opening",
       "Configurable expiry by time or view count",
@@ -48,6 +62,13 @@ export const companies: Company[] = [
       "A developer software product positioned around structured customer input, prioritisation discipline, and better product decision-making.",
     operatingModel: "B2B SaaS",
     primaryMarket: "Software teams, founders, and product organisations",
+    theme: {
+      accent: "#7aa2ff",
+      accentSoft: "rgba(122, 162, 255, 0.12)",
+      accentGlow: "rgba(122, 162, 255, 0.28)",
+      panelTint: "rgba(122, 162, 255, 0.08)",
+      code: "DEV",
+    },
     features: [
       "Embeddable feedback widget for any web app",
       "Structured categorisation — bugs, features, improvements",
@@ -70,6 +91,13 @@ export const companies: Company[] = [
       "A media technology product positioned around audience measurement, cross-channel visibility, and performance intelligence for digital entertainment.",
     operatingModel: "Media analytics platform",
     primaryMarket: "Studios, creators, and digital media operators",
+    theme: {
+      accent: "#d89a63",
+      accentSoft: "rgba(216, 154, 99, 0.12)",
+      accentGlow: "rgba(216, 154, 99, 0.28)",
+      panelTint: "rgba(216, 154, 99, 0.08)",
+      code: "MED",
+    },
     features: [
       "Multi-platform audience analytics in one dashboard",
       "Content performance scoring and benchmarking",
@@ -91,6 +119,13 @@ export const companies: Company[] = [
       "A healthcare infrastructure product positioned around medical identity, credential verification, and institutional trust across digital care systems.",
     operatingModel: "Healthcare verification platform",
     primaryMarket: "Healthcare providers, clinics, hospitals, and patients",
+    theme: {
+      accent: "#5ec8d8",
+      accentSoft: "rgba(94, 200, 216, 0.12)",
+      accentGlow: "rgba(94, 200, 216, 0.28)",
+      panelTint: "rgba(94, 200, 216, 0.08)",
+      code: "HLT",
+    },
     features: [
       "Real-time credential and licence verification",
       "Digital profiles for verified medical professionals",
@@ -113,6 +148,13 @@ export const companies: Company[] = [
       "A consumer AI platform positioned around social interaction, group dynamics, and multi-agent engagement rather than single-assistant utility.",
     operatingModel: "Consumer AI platform",
     primaryMarket: "Consumer internet users and AI-native social products",
+    theme: {
+      accent: "#c98bff",
+      accentSoft: "rgba(201, 139, 255, 0.12)",
+      accentGlow: "rgba(201, 139, 255, 0.28)",
+      panelTint: "rgba(201, 139, 255, 0.08)",
+      code: "AI",
+    },
     features: [
       "Create custom AI characters with unique personalities",
       "Persistent memory — characters remember your conversations",
@@ -135,6 +177,13 @@ export const companies: Company[] = [
       "A communications product positioned around privacy, trusted exchange, and higher-signal messaging behaviour.",
     operatingModel: "Private communications product",
     primaryMarket: "Privacy-conscious users and focused messaging use cases",
+    theme: {
+      accent: "#e68fa1",
+      accentSoft: "rgba(230, 143, 161, 0.12)",
+      accentGlow: "rgba(230, 143, 161, 0.28)",
+      panelTint: "rgba(230, 143, 161, 0.08)",
+      code: "COM",
+    },
     features: [
       "End-to-end encryption on all messages by default",
       "Disappearing messages with customisable timers",
@@ -156,6 +205,13 @@ export const companies: Company[] = [
       "A gaming platform positioned around persistence, community infrastructure, and deeper continuity in online player ecosystems.",
     operatingModel: "Gaming platform",
     primaryMarket: "Online game communities, players, and creators",
+    theme: {
+      accent: "#b7d36b",
+      accentSoft: "rgba(183, 211, 107, 0.12)",
+      accentGlow: "rgba(183, 211, 107, 0.28)",
+      panelTint: "rgba(183, 211, 107, 0.08)",
+      code: "GAM",
+    },
     features: [
       "Squad finder with skill-based matchmaking",
       "Game clip sharing and highlight reels",

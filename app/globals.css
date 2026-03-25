@@ -11,6 +11,10 @@
   --line-strong: rgba(243, 238, 231, 0.16);
   --accent: #a78bfa;
   --accent-dim: rgba(167, 139, 250, 0.14);
+  --company-accent: var(--accent);
+  --company-accent-soft: rgba(167, 139, 250, 0.12);
+  --company-accent-glow: rgba(167, 139, 250, 0.28);
+  --company-panel-tint: rgba(167, 139, 250, 0.08);
 }
 
 * { box-sizing: border-box; margin: 0; }
@@ -374,6 +378,33 @@ img { display: block; max-width: 100%; }
   align-items: end;
 }
 
+.company-page {
+  position: relative;
+}
+
+.company-page::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto;
+  height: 42rem;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 12% 12%, var(--company-accent-glow), transparent 26%),
+    linear-gradient(180deg, color-mix(in srgb, var(--company-panel-tint) 40%, transparent), transparent 72%);
+}
+
+.company-page::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--company-accent), transparent);
+  opacity: 0.45;
+  pointer-events: none;
+}
+
 .company-page-hero__content {
   max-width: 42rem;
 }
@@ -397,15 +428,46 @@ img { display: block; max-width: 100%; }
 }
 
 .company-badge--neutral {
-  border: 1px solid var(--line);
-  color: var(--dim);
-  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid color-mix(in srgb, var(--company-accent) 26%, var(--line));
+  color: color-mix(in srgb, var(--company-accent) 58%, var(--white));
+  background: color-mix(in srgb, var(--company-accent-soft) 75%, rgba(255, 255, 255, 0.01));
 }
 
 .company-badge--positive {
   border: 1px solid rgba(52, 211, 153, 0.2);
   color: #34d399;
   background: rgba(52, 211, 153, 0.12);
+}
+
+.company-page-hero__sector-line {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.8rem;
+  margin-bottom: 1.25rem;
+}
+
+.company-page-hero__sector-mark {
+  display: inline-flex;
+  min-width: 3.2rem;
+  min-height: 2.1rem;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid color-mix(in srgb, var(--company-accent) 26%, var(--line));
+  background: linear-gradient(180deg, color-mix(in srgb, var(--company-accent-soft) 85%, rgba(255,255,255,0.015)), rgba(255,255,255,0.01));
+  color: color-mix(in srgb, var(--company-accent) 72%, var(--white));
+  font-size: 0.66rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  box-shadow: 0 0 28px -16px var(--company-accent-glow);
+}
+
+.company-page-hero__sector-name {
+  color: color-mix(in srgb, var(--company-accent) 56%, var(--white));
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
 }
 
 .company-page-hero__positioning {
@@ -418,10 +480,29 @@ img { display: block; max-width: 100%; }
 
 .company-page-hero__panel {
   padding: 1.4rem;
-  border: 1px solid var(--line);
+  border: 1px solid color-mix(in srgb, var(--company-accent) 16%, var(--line));
   background:
     linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01)),
-    linear-gradient(135deg, rgba(167,139,250,0.08), transparent 55%);
+    linear-gradient(135deg, var(--company-panel-tint), transparent 58%);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.03);
+}
+
+.company-page-hero__panel-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 0.85rem;
+  padding-bottom: 0.85rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.company-page-hero__panel-code {
+  color: color-mix(in srgb, var(--company-accent) 78%, var(--white));
+  font-size: 0.74rem;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
 }
 
 .company-page-hero__panel-grid {
@@ -432,7 +513,7 @@ img { display: block; max-width: 100%; }
 
 .company-detail-item {
   padding-top: 0.9rem;
-  border-top: 1px solid var(--line);
+  border-top: 1px solid color-mix(in srgb, var(--company-accent) 14%, var(--line));
 }
 
 .company-detail-item p {
@@ -440,6 +521,21 @@ img { display: block; max-width: 100%; }
   color: var(--white);
   font-size: 0.9rem;
   line-height: 1.62;
+}
+
+.company-overview__body {
+  position: relative;
+  padding-left: 1.15rem;
+}
+
+.company-overview__body::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.25rem;
+  bottom: 0.25rem;
+  width: 1px;
+  background: linear-gradient(180deg, var(--company-accent), transparent 90%);
 }
 
 .company-summary {
@@ -458,8 +554,22 @@ img { display: block; max-width: 100%; }
 .company-summary__card {
   min-height: 100%;
   padding: 1.2rem 1.15rem;
-  border: 1px solid var(--line);
-  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  border: 1px solid color-mix(in srgb, var(--company-accent) 12%, var(--line));
+  background:
+    linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)),
+    linear-gradient(135deg, color-mix(in srgb, var(--company-panel-tint) 78%, transparent), transparent 70%);
+  box-shadow: 0 0 0 1px rgba(255,255,255,0.015) inset;
+  position: relative;
+  overflow: hidden;
+}
+
+.company-summary__card::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 2px;
+  background: linear-gradient(180deg, var(--company-accent), transparent 88%);
+  opacity: 0.8;
 }
 
 .company-summary__card p {
@@ -689,6 +799,37 @@ img { display: block; max-width: 100%; }
   background: rgba(167,139,250,0.03) !important;
 }
 
+.company-page .feature-card {
+  border-color: color-mix(in srgb, var(--company-accent) 10%, var(--line));
+  background:
+    linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)),
+    linear-gradient(135deg, color-mix(in srgb, var(--company-panel-tint) 55%, transparent), transparent 75%);
+}
+
+.company-page .feature-card:hover {
+  border-color: color-mix(in srgb, var(--company-accent) 26%, var(--line-strong)) !important;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.012)),
+    linear-gradient(135deg, color-mix(in srgb, var(--company-panel-tint) 85%, transparent), transparent 75%) !important;
+}
+
+.company-page .section-label {
+  color: color-mix(in srgb, var(--company-accent) 58%, var(--dim));
+}
+
+.company-page .btn-fill {
+  background: color-mix(in srgb, var(--company-accent) 88%, var(--white));
+  border-color: color-mix(in srgb, var(--company-accent) 88%, var(--white));
+  color: #050507;
+  box-shadow: 0 0 40px -24px var(--company-accent-glow);
+}
+
+.company-page .btn-fill:hover {
+  background: var(--company-accent);
+  border-color: var(--company-accent);
+  color: #050507;
+}
+
 /* ── Forms ── */
 input:focus, textarea:focus {
   border-color: rgba(255,255,255,0.3) !important;
@@ -810,6 +951,11 @@ input:focus, textarea:focus {
   .hero-actions {
     flex-direction: column;
     align-items: stretch;
+  }
+
+  .company-page-hero__sector-line {
+    width: 100%;
+    justify-content: space-between;
   }
 
   .page-intro__media-note,
