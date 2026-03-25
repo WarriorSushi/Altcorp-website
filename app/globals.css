@@ -367,6 +367,108 @@ img { display: block; max-width: 100%; }
   line-height: 1.6;
 }
 
+.company-page-hero__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(320px, 0.95fr);
+  gap: clamp(2rem, 5vw, 4rem);
+  align-items: end;
+}
+
+.company-page-hero__content {
+  max-width: 42rem;
+}
+
+.company-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-bottom: 1.4rem;
+}
+
+.company-badge {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2rem;
+  padding: 0 0.8rem;
+  font-size: 0.6rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+}
+
+.company-badge--neutral {
+  border: 1px solid var(--line);
+  color: var(--dim);
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.company-badge--positive {
+  border: 1px solid rgba(52, 211, 153, 0.2);
+  color: #34d399;
+  background: rgba(52, 211, 153, 0.12);
+}
+
+.company-page-hero__positioning {
+  max-width: 42rem;
+}
+
+.company-page-hero__actions {
+  margin-top: 2rem;
+}
+
+.company-page-hero__panel {
+  padding: 1.4rem;
+  border: 1px solid var(--line);
+  background:
+    linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01)),
+    linear-gradient(135deg, rgba(167,139,250,0.08), transparent 55%);
+}
+
+.company-page-hero__panel-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.05rem;
+}
+
+.company-detail-item {
+  padding-top: 0.9rem;
+  border-top: 1px solid var(--line);
+}
+
+.company-detail-item p {
+  margin-top: 0.5rem;
+  color: var(--white);
+  font-size: 0.9rem;
+  line-height: 1.62;
+}
+
+.company-summary {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  gap: clamp(1.75rem, 4vw, 3rem);
+  align-items: start;
+}
+
+.company-summary__cards {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.company-summary__card {
+  min-height: 100%;
+  padding: 1.2rem 1.15rem;
+  border: 1px solid var(--line);
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+}
+
+.company-summary__card p {
+  margin-top: 0.5rem;
+  color: var(--white);
+  font-size: 0.92rem;
+  line-height: 1.66;
+}
+
 .page-intro {
   padding-top: clamp(8rem, 14vw, 12rem);
   padding-bottom: clamp(2.8rem, 6vw, 4.5rem);
@@ -471,6 +573,114 @@ img { display: block; max-width: 100%; }
   line-height: 1.7;
 }
 
+.about-page-intro {
+  align-items: end;
+}
+
+.about-page-intro__panel,
+.contact-page-intro__panel {
+  padding: 1.35rem 1.4rem;
+  border: 1px solid var(--line);
+  background:
+    linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)),
+    linear-gradient(135deg, rgba(167,139,250,0.08), transparent 58%);
+}
+
+.about-page-intro__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.about-card-stack {
+  padding-top: 0.25rem;
+}
+
+.about-card {
+  border: 1px solid var(--line);
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  padding: 1.2rem 1.25rem;
+  transition: border-color 0.25s ease, background 0.25s ease, transform 0.25s ease;
+}
+
+.about-card:hover {
+  border-color: var(--line-strong);
+  background: linear-gradient(180deg, rgba(255,255,255,0.028), rgba(255,255,255,0.012));
+  transform: translateY(-2px);
+}
+
+.about-principles {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+  margin-top: 2.5rem;
+}
+
+.about-principles__card {
+  padding: 1.2rem 1.25rem;
+  border: 1px solid var(--line);
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+}
+
+.about-principles__card p {
+  margin-top: 0.5rem;
+  color: var(--ghost);
+  font-size: 0.9rem;
+  line-height: 1.7;
+}
+
+.contact-page-intro {
+  align-items: end;
+}
+
+.contact-page-intro__panel p {
+  margin-top: 0.55rem;
+  color: var(--white);
+  font-size: 0.94rem;
+  line-height: 1.72;
+}
+
+.contact-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(280px, 0.75fr);
+  gap: clamp(2rem, 5vw, 4rem);
+  align-items: start;
+}
+
+.contact-form-shell {
+  padding: 1.5rem;
+  border: 1px solid var(--line);
+  background:
+    linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)),
+    linear-gradient(135deg, rgba(167,139,250,0.08), transparent 60%);
+}
+
+.contact-form-shell__heading {
+  margin-bottom: 1.5rem;
+}
+
+.contact-form {
+  display: grid;
+  gap: 1.2rem;
+}
+
+.contact-form-state {
+  padding: 1rem 1.1rem;
+  border: 1px solid rgba(52, 211, 153, 0.18);
+  background: rgba(52, 211, 153, 0.08);
+}
+
+.contact-info-stack {
+  display: grid;
+  gap: 0.85rem;
+}
+
+.contact-info-card {
+  padding: 1.1rem 1.2rem;
+  border: 1px solid var(--line);
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+}
+
 .feature-card {
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -498,7 +708,10 @@ input:focus, textarea:focus {
   .section-intro,
   .cta-shell,
   .leadership-spotlight,
-  .page-intro__split {
+  .page-intro__split,
+  .company-page-hero__grid,
+  .company-summary,
+  .contact-layout {
     grid-template-columns: 1fr;
   }
 
@@ -519,6 +732,13 @@ input:focus, textarea:focus {
   }
 
   .leadership-notes {
+    grid-template-columns: 1fr;
+  }
+
+  .company-page-hero__panel-grid,
+  .about-page-intro__grid,
+  .about-principles,
+  .company-summary__cards {
     grid-template-columns: 1fr;
   }
 
@@ -597,6 +817,13 @@ input:focus, textarea:focus {
     left: 1rem;
     right: 1rem;
     bottom: 1rem;
+  }
+
+  .contact-form-shell,
+  .about-page-intro__panel,
+  .contact-page-intro__panel,
+  .company-page-hero__panel {
+    padding: 1.15rem;
   }
 
   .cta-outline {

@@ -19,15 +19,24 @@ export default function ContactPage() {
     <main>
       <section className="container page-intro">
         <Reveal>
-          <div className="page-intro__content">
-            <p className="section-label">Contact</p>
-            <h1 className="page-intro__title">
-              Contact Altcorp
-            </h1>
-            <p className="body-text page-intro__body">
-              Reach out regarding Altcorp, one of its companies, or a business
-              enquiry related to the group.
-            </p>
+          <div className="page-intro__split contact-page-intro">
+            <div className="page-intro__content">
+              <p className="section-label">Contact</p>
+              <h1 className="page-intro__title">
+                Contact Altcorp
+              </h1>
+              <p className="body-text page-intro__body">
+                Reach out regarding Altcorp, one of its companies, or a business
+                enquiry related to the group.
+              </p>
+            </div>
+            <div className="contact-page-intro__panel">
+              <span className="meta-label">Communication</span>
+              <p>
+                The contact page is intended for group-level enquiries, company-specific
+                questions, partnership discussions, and business correspondence.
+              </p>
+            </div>
           </div>
         </Reveal>
       </section>
@@ -37,18 +46,24 @@ export default function ContactPage() {
       {/* Content */}
       <section className="container section-padding">
         <Reveal>
-          <div className="grid grid-cols-1 min-[900px]:grid-cols-[1fr_0.7fr] gap-8 min-[900px]:gap-16 items-start">
+          <div className="contact-layout">
             {/* Form */}
-            <div>
+            <div className="contact-form-shell">
+              <div className="contact-form-shell__heading">
+                <p className="section-label">Write</p>
+                <h2 className="section-heading section-heading--wide">
+                  Start the conversation.
+                </h2>
+              </div>
               <ContactForm />
             </div>
 
             {/* Info */}
-            <div>
+            <div className="contact-info-stack">
               {infoCards.map((card) => (
                 <div
                   key={card.label}
-                  className="py-5 border-b border-[var(--line)]"
+                  className="contact-info-card"
                 >
                   <p className="section-label mb-1">
                     {card.label}

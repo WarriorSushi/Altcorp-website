@@ -26,20 +26,60 @@ const structureCards = [
   },
 ];
 
+const operatingPrinciples = [
+  {
+    title: "Long-term ownership",
+    description:
+      "Altcorp is designed to hold and develop businesses over time rather than treat them as disconnected short-cycle launches.",
+  },
+  {
+    title: "Clear market positioning",
+    description:
+      "Each business is expected to address a defined audience, category, and commercial role inside the broader group.",
+  },
+  {
+    title: "Shared group direction",
+    description:
+      "Operating companies benefit from common strategic direction, product discipline, and long-term alignment across the parent structure.",
+  },
+];
+
 export default function AboutPage() {
   return (
     <main>
       <section className="container page-intro">
         <Reveal>
-          <div className="page-intro__content">
-            <p className="section-label">About</p>
-            <h1 className="page-intro__title">
-              The parent company behind software, platforms, and operating brands.
-            </h1>
-            <p className="body-text page-intro__body">
-              Altcorp is the parent company behind software businesses,
-              specialist digital products, and category-specific platforms.
-            </p>
+          <div className="page-intro__split about-page-intro">
+            <div className="page-intro__content">
+              <p className="section-label">About</p>
+              <h1 className="page-intro__title">
+                The parent company behind software, platforms, and operating brands.
+              </h1>
+              <p className="body-text page-intro__body">
+                Altcorp is the parent company behind software businesses,
+                specialist digital products, and category-specific platforms.
+              </p>
+            </div>
+            <div className="about-page-intro__panel">
+              <div className="about-page-intro__grid">
+                <div className="company-detail-item">
+                  <span className="meta-label">Role</span>
+                  <p>Parent company and long-term owner</p>
+                </div>
+                <div className="company-detail-item">
+                  <span className="meta-label">Scope</span>
+                  <p>Software, healthcare, media, communications, gaming, and AI</p>
+                </div>
+                <div className="company-detail-item">
+                  <span className="meta-label">Base</span>
+                  <p>India</p>
+                </div>
+                <div className="company-detail-item">
+                  <span className="meta-label">Focus</span>
+                  <p>Operating companies, products, and specialist platforms</p>
+                </div>
+              </div>
+            </div>
           </div>
         </Reveal>
       </section>
@@ -69,16 +109,16 @@ export default function AboutPage() {
             </div>
 
             {/* Right — structure cards */}
-            <div className="space-y-4">
+            <div className="space-y-4 about-card-stack">
               {structureCards.map((card) => (
                 <div
                   key={card.title}
-                  className="border border-[var(--line)] bg-[var(--surface)] p-5 sm:p-[1.3rem] transition-colors hover:border-[var(--line-strong)]"
+                  className="about-card"
                 >
                   <h3 className="text-[1rem] sm:text-[1.05rem] font-extrabold">
                     {card.title}
                   </h3>
-                  <p className="text-[color:var(--dim)] text-[0.86rem] mt-2 leading-relaxed">
+                  <p className="text-[color:var(--dim)] text-[0.9rem] mt-2 leading-relaxed">
                     {card.description}
                   </p>
                 </div>
@@ -111,6 +151,14 @@ export default function AboutPage() {
                 across all brands, products, and platforms.
               </p>
             </div>
+          </div>
+          <div className="about-principles">
+            {operatingPrinciples.map((principle) => (
+              <div key={principle.title} className="about-principles__card">
+                <span className="meta-label">{principle.title}</span>
+                <p>{principle.description}</p>
+              </div>
+            ))}
           </div>
         </Reveal>
       </section>

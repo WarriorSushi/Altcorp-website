@@ -34,41 +34,65 @@ export default async function CompanyPage({ params }: Props) {
 
   return (
     <main>
-      <section className="container page-intro">
+      <section className="container page-intro company-page-hero">
         <Reveal>
-          <div className="flex items-center gap-3 mb-6">
-            <span className="inline-block px-3 py-1 text-[0.6rem] font-bold uppercase tracking-[0.14em] border border-[var(--line)] text-[var(--dim)]">
-              {company.sector}
-            </span>
-            <span
-              className="inline-block px-3 py-1 text-[0.6rem] font-bold uppercase tracking-[0.14em]"
-              style={{
-                background:
-                  "rgba(52,211,153,0.12)",
-                color:
-                  "#34d399",
-                border: "1px solid rgba(52,211,153,0.2)",
-              }}
-            >
-              {company.status}
-            </span>
+          <div className="company-page-hero__grid">
+            <div className="company-page-hero__content">
+              <div className="company-badges">
+                <span className="company-badge company-badge--neutral">
+                  {company.sector}
+                </span>
+                <span className="company-badge company-badge--positive">
+                  {company.status}
+                </span>
+              </div>
+              <h1 className="page-intro__title page-intro__title--company">
+                {company.name}
+              </h1>
+              <p className="text-[clamp(1rem,2vw,1.18rem)] text-[var(--ghost)] mt-4 max-w-[40rem] leading-relaxed">
+                {company.tagline}
+              </p>
+              <p className="body-text mt-6 company-page-hero__positioning">
+                {company.positioning}
+              </p>
+              <div className="hero-actions company-page-hero__actions">
+                {company.url ? (
+                  <a
+                    href={company.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn btn-fill inline-flex"
+                  >
+                    Visit {company.name}
+                  </a>
+                ) : null}
+                <Link href="/contact" className="btn">
+                  Contact Altcorp
+                </Link>
+              </div>
+            </div>
+
+            <div className="company-page-hero__panel">
+              <div className="company-page-hero__panel-grid">
+                <div className="company-detail-item">
+                  <span className="meta-label">Operating Model</span>
+                  <p>{company.operatingModel}</p>
+                </div>
+                <div className="company-detail-item">
+                  <span className="meta-label">Primary Market</span>
+                  <p>{company.primaryMarket}</p>
+                </div>
+                <div className="company-detail-item">
+                  <span className="meta-label">Company Role</span>
+                  <p>Altcorp operating business</p>
+                </div>
+                <div className="company-detail-item">
+                  <span className="meta-label">Delivery</span>
+                  <p>Live software product and active market presence</p>
+                </div>
+              </div>
+            </div>
           </div>
-          <h1 className="page-intro__title page-intro__title--company">
-            {company.name}
-          </h1>
-          <p className="text-[clamp(1rem,2vw,1.18rem)] text-[var(--ghost)] mt-4 max-w-[40rem] leading-relaxed">
-            {company.tagline}
-          </p>
-          {company.url && (
-            <a
-              href={company.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn btn-fill inline-flex mt-8"
-            >
-              Visit {company.name} →
-            </a>
-          )}
         </Reveal>
       </section>
 
@@ -86,6 +110,35 @@ export default async function CompanyPage({ params }: Props) {
             </div>
             <div>
               <p className="body-text">{company.longDescription}</p>
+            </div>
+          </div>
+        </Reveal>
+      </section>
+
+      <div className="container"><SectionDivider /></div>
+
+      <section className="container section-padding">
+        <Reveal>
+          <div className="company-summary">
+            <div>
+              <p className="section-label">Positioning</p>
+              <h2 className="section-heading section-heading--wide">
+                How {company.name} is positioned within the group.
+              </h2>
+            </div>
+            <div className="company-summary__cards">
+              <div className="company-summary__card">
+                <span className="meta-label">Category</span>
+                <p>{company.sector}</p>
+              </div>
+              <div className="company-summary__card">
+                <span className="meta-label">Market</span>
+                <p>{company.primaryMarket}</p>
+              </div>
+              <div className="company-summary__card">
+                <span className="meta-label">Operating Model</span>
+                <p>{company.operatingModel}</p>
+              </div>
             </div>
           </div>
         </Reveal>

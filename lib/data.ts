@@ -5,6 +5,9 @@ export interface Company {
   slug: string;
   tagline: string;
   longDescription: string;
+  positioning: string;
+  operatingModel: string;
+  primaryMarket: string;
   features: string[];
   status: "Operating";
   url?: string;
@@ -19,6 +22,10 @@ export const companies: Company[] = [
     tagline: "Secure sharing built around controlled access and expiry.",
     longDescription:
       "BurnerLinks is a privacy-first sharing product designed for controlled distribution of files, passwords, and sensitive information. Links can expire by time or view count, helping individuals and teams share confidential material with greater control and lower operational risk.",
+    positioning:
+      "A focused security product for controlled digital distribution where confidentiality, expiry, and access discipline matter.",
+    operatingModel: "Security SaaS",
+    primaryMarket: "Professionals, teams, and privacy-sensitive workflows",
     features: [
       "One-time view links that self-destruct after opening",
       "Configurable expiry by time or view count",
@@ -37,6 +44,10 @@ export const companies: Company[] = [
     tagline: "Structured feedback collection for product teams.",
     longDescription:
       "Feedbacks.dev is a product feedback platform built for founders, teams, and software companies that need clearer customer signals. It is designed to collect, organise, and prioritise feedback in a more structured way, helping teams convert user input into better product decisions.",
+    positioning:
+      "A product feedback system for software teams that want cleaner customer input and more decisive prioritisation.",
+    operatingModel: "B2B SaaS",
+    primaryMarket: "Software teams, founders, and product organisations",
     features: [
       "Embeddable feedback widget for any web app",
       "Structured categorisation — bugs, features, improvements",
@@ -55,6 +66,10 @@ export const companies: Company[] = [
     tagline: "Audience, performance, and distribution intelligence for media.",
     longDescription:
       "Supaviewer is a media intelligence platform designed for digital entertainment, audience analytics, and distribution visibility. It brings together performance signals across channels and helps creators, studios, and media operators understand audience behaviour, content performance, and reach.",
+    positioning:
+      "A media intelligence product built around measurement, visibility, and distribution insight for modern digital entertainment.",
+    operatingModel: "Media analytics platform",
+    primaryMarket: "Studios, creators, and digital media operators",
     features: [
       "Multi-platform audience analytics in one dashboard",
       "Content performance scoring and benchmarking",
@@ -72,6 +87,10 @@ export const companies: Company[] = [
     tagline: "Trust, verified. For healthcare professionals.",
     longDescription:
       "Verified.Doctor is a digital verification platform for medical professionals. It provides hospitals, clinics, and patients with a reliable way to confirm the credentials, qualifications, and licensing status of healthcare practitioners. The platform streamlines the credentialing process while maintaining the highest standards of data accuracy and privacy.",
+    positioning:
+      "A healthcare trust and credential-verification layer designed for medical identity, institutional assurance, and patient confidence.",
+    operatingModel: "Healthcare verification platform",
+    primaryMarket: "Healthcare providers, clinics, hospitals, and patients",
     features: [
       "Real-time credential and licence verification",
       "Digital profiles for verified medical professionals",
@@ -90,6 +109,10 @@ export const companies: Company[] = [
     tagline: "Group-based AI interaction designed as a social product.",
     longDescription:
       "MyGang AI is a consumer platform built around multi-agent social interaction. It is designed as a group-based AI product in which users engage with multiple AI personalities inside a shared environment, creating a more social and layered interaction model than a one-to-one assistant.",
+    positioning:
+      "A consumer AI platform positioned around group interaction, social dynamics, and multi-agent engagement rather than one-to-one prompting.",
+    operatingModel: "Consumer AI platform",
+    primaryMarket: "Consumer internet users and AI-native social products",
     features: [
       "Create custom AI characters with unique personalities",
       "Persistent memory — characters remember your conversations",
@@ -108,6 +131,10 @@ export const companies: Company[] = [
     tagline: "Private messaging built around focused communication.",
     longDescription:
       "Ottr Chat is a private messaging platform built around secure, focused communication. It is designed for users who want stronger privacy controls, a cleaner messaging experience, and communication products that are not built around public feeds or advertising incentives.",
+    positioning:
+      "A private communications product focused on trust, signal quality, and a cleaner messaging experience.",
+    operatingModel: "Private communications product",
+    primaryMarket: "Privacy-conscious users and focused messaging use cases",
     features: [
       "End-to-end encryption on all messages by default",
       "Disappearing messages with customisable timers",
@@ -125,6 +152,10 @@ export const companies: Company[] = [
     tagline: "Persistent systems for online games and player communities.",
     longDescription:
       "AFKNPC is a gaming platform focused on persistent online systems, community infrastructure, and player engagement. It is positioned around the idea that modern game ecosystems require stronger tools for interaction, continuity, and community participation beyond isolated play sessions.",
+    positioning:
+      "A gaming infrastructure product centred on persistent online systems, continuity, and community participation beyond single sessions.",
+    operatingModel: "Gaming platform",
+    primaryMarket: "Online game communities, players, and creators",
     features: [
       "Squad finder with skill-based matchmaking",
       "Game clip sharing and highlight reels",

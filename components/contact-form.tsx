@@ -7,16 +7,16 @@ type FormStatus = "idle" | "submitting" | "success" | "error";
 const FORMSPREE_URL = "https://formspree.io/f/FORM_ID"; // Replace FORM_ID with your Formspree form ID
 
 const inputStyle: React.CSSProperties = {
-  background: "transparent",
+  background: "rgba(255,255,255,0.015)",
   border: "1px solid var(--line)",
   borderRadius: 0,
   color: "var(--white)",
-  padding: "0.8rem 1rem",
-  fontSize: "0.88rem",
+  padding: "1rem 1rem",
+  fontSize: "0.92rem",
   fontFamily: "inherit",
   width: "100%",
   outline: "none",
-  transition: "border-color 0.2s",
+  transition: "border-color 0.2s, background 0.2s",
 };
 
 const labelStyle: React.CSSProperties = {
@@ -63,14 +63,17 @@ export function ContactForm() {
 
   if (status === "success") {
     return (
-      <p style={{ color: "var(--white)", fontWeight: 700, fontSize: "0.92rem" }}>
+      <div className="contact-form-state">
+        <span className="meta-label">Sent</span>
+        <p style={{ color: "var(--white)", fontWeight: 700, fontSize: "0.92rem", marginTop: "0.35rem" }}>
         Message sent. We&apos;ll be in touch.
-      </p>
+        </p>
+      </div>
     );
   }
 
   return (
-    <form onSubmit={handleSubmit} style={{ display: "grid", gap: "1.2rem" }}>
+    <form onSubmit={handleSubmit} className="contact-form">
       <div>
         <label style={labelStyle} htmlFor="name">Name</label>
         <input
@@ -128,13 +131,13 @@ export function ContactForm() {
         disabled={status === "submitting"}
         style={{
           width: "100%",
-          minHeight: 48,
+          minHeight: 52,
           background: "var(--white)",
           color: "#000",
           fontWeight: 800,
           textTransform: "uppercase",
-          fontSize: "0.82rem",
-          letterSpacing: "0.06em",
+          fontSize: "0.78rem",
+          letterSpacing: "0.1em",
           border: "none",
           borderRadius: 0,
           cursor: status === "submitting" ? "not-allowed" : "pointer",
