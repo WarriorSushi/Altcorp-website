@@ -16,14 +16,14 @@ export interface Company {
 export const companies: Company[] = [
   {
     name: "BurnerLinks",
-    description: "Secure file and link distribution",
+    description: "Controlled file and link distribution",
     sector: "Security Software",
     slug: "burnerlinks",
-    tagline: "Secure sharing built around controlled access and expiry.",
+    tagline: "Secure distribution for sensitive links, files, and access flows.",
     longDescription:
-      "BurnerLinks is a privacy-first sharing product designed for controlled distribution of files, passwords, and sensitive information. Links can expire by time or view count, helping individuals and teams share confidential material with greater control and lower operational risk.",
+      "BurnerLinks is a security-focused distribution product for files, passwords, and sensitive information. It gives users tighter control over how material is shared, how long it remains available, and who can access it, helping reduce exposure in workflows where confidentiality and controlled delivery matter.",
     positioning:
-      "A focused security product for controlled digital distribution where confidentiality, expiry, and access discipline matter.",
+      "A security software product positioned around controlled digital distribution, expiry-based access, and lower-risk handling of confidential material.",
     operatingModel: "Security SaaS",
     primaryMarket: "Professionals, teams, and privacy-sensitive workflows",
     features: [
@@ -38,14 +38,14 @@ export const companies: Company[] = [
   },
   {
     name: "Feedbacks.dev",
-    description: "Structured customer feedback management",
+    description: "Structured product feedback operations",
     sector: "Developer Software",
     slug: "feedbacks-dev",
-    tagline: "Structured feedback collection for product teams.",
+    tagline: "Feedback infrastructure for software teams that need clear product signals.",
     longDescription:
-      "Feedbacks.dev is a product feedback platform built for founders, teams, and software companies that need clearer customer signals. It is designed to collect, organise, and prioritise feedback in a more structured way, helping teams convert user input into better product decisions.",
+      "Feedbacks.dev is a feedback operations platform for software teams that need clearer customer input and stronger prioritisation. It is designed to capture, organise, and structure product feedback so teams can convert user demand into decisions, roadmaps, and measurable product improvements.",
     positioning:
-      "A product feedback system for software teams that want cleaner customer input and more decisive prioritisation.",
+      "A developer software product positioned around structured customer input, prioritisation discipline, and better product decision-making.",
     operatingModel: "B2B SaaS",
     primaryMarket: "Software teams, founders, and product organisations",
     features: [
@@ -60,14 +60,14 @@ export const companies: Company[] = [
   },
   {
     name: "Supaviewer",
-    description: "Media intelligence and distribution platform",
+    description: "Media intelligence and audience analytics",
     sector: "Media Technology",
     slug: "supaviewer",
-    tagline: "Audience, performance, and distribution intelligence for media.",
+    tagline: "Audience analytics and distribution visibility for modern media operators.",
     longDescription:
-      "Supaviewer is a media intelligence platform designed for digital entertainment, audience analytics, and distribution visibility. It brings together performance signals across channels and helps creators, studios, and media operators understand audience behaviour, content performance, and reach.",
+      "Supaviewer is a media intelligence platform built for digital entertainment, audience analytics, and distribution visibility. It consolidates performance signals across channels and gives creators, studios, and media operators a clearer view of audience behaviour, content performance, and commercial reach.",
     positioning:
-      "A media intelligence product built around measurement, visibility, and distribution insight for modern digital entertainment.",
+      "A media technology product positioned around audience measurement, cross-channel visibility, and performance intelligence for digital entertainment.",
     operatingModel: "Media analytics platform",
     primaryMarket: "Studios, creators, and digital media operators",
     features: [
@@ -81,14 +81,14 @@ export const companies: Company[] = [
   },
   {
     name: "Verified.Doctor",
-    description: "Medical professional verification",
+    description: "Medical credential verification infrastructure",
     sector: "Healthcare",
     slug: "verified-doctor",
-    tagline: "Trust, verified. For healthcare professionals.",
+    tagline: "Verification infrastructure for medical identity and professional trust.",
     longDescription:
-      "Verified.Doctor is a digital verification platform for medical professionals. It provides hospitals, clinics, and patients with a reliable way to confirm the credentials, qualifications, and licensing status of healthcare practitioners. The platform streamlines the credentialing process while maintaining the highest standards of data accuracy and privacy.",
+      "Verified.Doctor is a healthcare verification platform for medical professionals, institutions, and patient-facing systems. It enables reliable confirmation of credentials, qualifications, and licensing status, helping healthcare organisations streamline trust workflows while maintaining strong standards of accuracy, privacy, and institutional confidence.",
     positioning:
-      "A healthcare trust and credential-verification layer designed for medical identity, institutional assurance, and patient confidence.",
+      "A healthcare infrastructure product positioned around medical identity, credential verification, and institutional trust across digital care systems.",
     operatingModel: "Healthcare verification platform",
     primaryMarket: "Healthcare providers, clinics, hospitals, and patients",
     features: [
@@ -106,11 +106,11 @@ export const companies: Company[] = [
     description: "AI-native social interaction platform",
     sector: "AI Platforms",
     slug: "mygang-ai",
-    tagline: "Group-based AI interaction designed as a social product.",
+    tagline: "A social AI product built around multi-agent interaction and shared environments.",
     longDescription:
-      "MyGang AI is a consumer platform built around multi-agent social interaction. It is designed as a group-based AI product in which users engage with multiple AI personalities inside a shared environment, creating a more social and layered interaction model than a one-to-one assistant.",
+      "MyGang AI is a consumer AI platform built around multi-agent social interaction. Instead of a one-to-one assistant model, it is structured as a shared environment where users engage with multiple AI personalities, creating a more social, persistent, and product-like interaction layer.",
     positioning:
-      "A consumer AI platform positioned around group interaction, social dynamics, and multi-agent engagement rather than one-to-one prompting.",
+      "A consumer AI platform positioned around social interaction, group dynamics, and multi-agent engagement rather than single-assistant utility.",
     operatingModel: "Consumer AI platform",
     primaryMarket: "Consumer internet users and AI-native social products",
     features: [
@@ -125,14 +125,14 @@ export const companies: Company[] = [
   },
   {
     name: "Ottr Chat",
-    description: "Private communication platform",
+    description: "Private-first messaging platform",
     sector: "Communications",
     slug: "ottr-chat",
-    tagline: "Private messaging built around focused communication.",
+    tagline: "Private messaging designed for signal, trust, and focused communication.",
     longDescription:
-      "Ottr Chat is a private messaging platform built around secure, focused communication. It is designed for users who want stronger privacy controls, a cleaner messaging experience, and communication products that are not built around public feeds or advertising incentives.",
+      "Ottr Chat is a private messaging platform designed for secure, focused communication. It is built for users who want stronger privacy controls, a cleaner product experience, and a communications tool that is not shaped by feeds, surveillance-style engagement loops, or advertising incentives.",
     positioning:
-      "A private communications product focused on trust, signal quality, and a cleaner messaging experience.",
+      "A communications product positioned around privacy, trusted exchange, and higher-signal messaging behaviour.",
     operatingModel: "Private communications product",
     primaryMarket: "Privacy-conscious users and focused messaging use cases",
     features: [
@@ -149,11 +149,11 @@ export const companies: Company[] = [
     description: "Persistent gaming and community infrastructure",
     sector: "Gaming Platforms",
     slug: "afknpc",
-    tagline: "Persistent systems for online games and player communities.",
+    tagline: "Infrastructure for persistent online game systems and player communities.",
     longDescription:
-      "AFKNPC is a gaming platform focused on persistent online systems, community infrastructure, and player engagement. It is positioned around the idea that modern game ecosystems require stronger tools for interaction, continuity, and community participation beyond isolated play sessions.",
+      "AFKNPC is a gaming platform focused on persistent online systems, player community infrastructure, and continuity across sessions. It is built around the view that modern game ecosystems require stronger community, coordination, and engagement tools beyond isolated play sessions or single-title utility features.",
     positioning:
-      "A gaming infrastructure product centred on persistent online systems, continuity, and community participation beyond single sessions.",
+      "A gaming platform positioned around persistence, community infrastructure, and deeper continuity in online player ecosystems.",
     operatingModel: "Gaming platform",
     primaryMarket: "Online game communities, players, and creators",
     features: [
