@@ -24,8 +24,8 @@ export function Header() {
             : "py-6"
         }`}
       >
-        <div className="flex items-center gap-6 sm:gap-8 max-w-[1200px] mx-auto px-8 w-full">
-          <Link href="/" className="flex items-center gap-0">
+        <div className="flex items-center justify-between gap-4 sm:gap-8 max-w-[1200px] mx-auto px-5 sm:px-8 w-full">
+          <Link href="/" className="flex items-center gap-0 shrink-0">
             <span className="text-[0.88rem] font-[900] tracking-[0.08em] uppercase">
               Alt
             </span>
@@ -45,13 +45,15 @@ export function Header() {
             ))}
           </nav>
           <button
-            className="ml-auto md:hidden flex flex-col gap-[5px] p-2 -mr-2"
+            className="md:hidden inline-flex h-11 w-11 shrink-0 items-center justify-center"
             onClick={() => setMobileOpen(true)}
             aria-label="Open menu"
           >
-            <span className="block w-5 h-px bg-white" />
-            <span className="block w-5 h-px bg-white" />
-            <span className="block w-5 h-px bg-white" />
+            <span className="flex flex-col gap-[5px]">
+              <span className="block w-5 h-px bg-white" />
+              <span className="block w-5 h-px bg-white" />
+              <span className="block w-5 h-px bg-white" />
+            </span>
           </button>
         </div>
       </header>
