@@ -20,48 +20,38 @@ export function Header() {
       <header
         className={`fixed top-0 left-0 right-0 z-90 transition-all duration-300 ${
           scrolled
-            ? "py-4 backdrop-blur-xl bg-[rgba(5,5,7,0.82)] border-b border-[var(--line)]"
-            : "py-5"
+            ? "py-4 backdrop-blur-xl bg-[rgba(3,3,3,0.85)] border-b border-[var(--line)]"
+            : "py-6"
         }`}
       >
-        <div className="flex items-center gap-6 sm:gap-8 max-w-[1280px] mx-auto px-5 sm:px-8 w-full">
-          <Link
-            href="/"
-            className="flex items-center gap-3 min-w-0"
-          >
-            <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-[rgba(167,139,250,0.22)] bg-[rgba(167,139,250,0.08)]">
-              <span className="h-2.5 w-2.5 rounded-full bg-[var(--accent)] shadow-[0_0_24px_rgba(167,139,250,0.45)]" />
+        <div className="flex items-center gap-6 sm:gap-8 max-w-[1200px] mx-auto px-8 w-full">
+          <Link href="/" className="flex items-center gap-0">
+            <span className="text-[0.88rem] font-[900] tracking-[0.08em] uppercase">
+              Alt
             </span>
-            <span className="flex min-w-0 flex-col">
-              <span className="text-[0.92rem] font-[800] tracking-[-0.03em]">
-                Altcorp
-              </span>
-              <span className="hidden sm:block text-[0.62rem] uppercase tracking-[0.16em] text-[var(--dim)]">
-                Parent Company
-              </span>
+            <span className="text-[0.88rem] font-[400] tracking-[0.08em] uppercase text-[var(--dim)]">
+              corp
             </span>
           </Link>
-          <nav className="ml-auto hidden md:flex gap-[1.6rem] lg:gap-[2rem]">
+          <nav className="ml-auto hidden md:flex gap-[2rem]">
             {navigation.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
-                className="text-[var(--dim)] text-[0.71rem] font-[650] tracking-[0.1em] uppercase transition-colors duration-300 hover:text-white"
+                className="text-[var(--dim)] text-[0.72rem] font-[600] tracking-[0.08em] uppercase transition-colors duration-300 hover:text-white"
               >
                 {item.label}
               </Link>
             ))}
           </nav>
           <button
-            className="ml-auto md:hidden flex h-11 w-11 items-center justify-center rounded-full border border-[var(--line)] bg-[rgba(255,255,255,0.02)]"
+            className="ml-auto md:hidden flex flex-col gap-[5px] p-2 -mr-2"
             onClick={() => setMobileOpen(true)}
             aria-label="Open menu"
           >
-            <span className="flex flex-col gap-[4px]">
-              <span className="block h-px w-4 bg-white" />
-              <span className="block h-px w-4 bg-white" />
-              <span className="block h-px w-4 bg-white" />
-            </span>
+            <span className="block w-5 h-px bg-white" />
+            <span className="block w-5 h-px bg-white" />
+            <span className="block w-5 h-px bg-white" />
           </button>
         </div>
       </header>
