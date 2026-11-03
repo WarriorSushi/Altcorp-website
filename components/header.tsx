@@ -1,5 +1,7 @@
 "use client";
 
+import { VectorIcon } from "@/components/vector-icon";
+
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -65,7 +67,7 @@ export function Header() {
               </Link>
             ))}
             <Link href="/contact" className="nav-contact">
-              Contact <span aria-hidden="true">↗</span>
+              Contact <VectorIcon />
             </Link>
           </nav>
           <button
@@ -77,7 +79,7 @@ export function Header() {
             aria-expanded={open}
             aria-controls="mobile-menu"
           >
-            Menu <span aria-hidden="true">☰</span>
+            Menu <VectorIcon name="menu" />
           </button>
         </div>
       </header>
@@ -104,17 +106,17 @@ export function Header() {
               autoFocus
               aria-label="Close menu"
             >
-              Close ×
+              Close <VectorIcon name="close" />
             </button>
           </div>
           <nav aria-label="Mobile navigation">
             {pageLinks.map((link) => (
               <Link key={link.href} href={link.href} onClick={close}>
-                {link.label} <span aria-hidden="true">↗</span>
+                {link.label} <VectorIcon />
               </Link>
             ))}
             <Link href="/contact" onClick={close}>
-              Let’s talk <span aria-hidden="true">↗</span>
+              Let’s talk <VectorIcon />
             </Link>
           </nav>
           <a className="menu-email" href="mailto:contact@altcorp.in">

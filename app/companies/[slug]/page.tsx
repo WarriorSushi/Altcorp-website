@@ -1,3 +1,4 @@
+import { VectorIcon } from "@/components/vector-icon";
 import { companies } from "@/lib/data";
 import { notFound } from "next/navigation";
 import Link from "next/link";
@@ -26,7 +27,7 @@ export default async function CompanyPage({ params }: Props) {
     <main id="main-content">
       <section className="container editorial-intro company-intro">
         <Link href="/#companies" className="section-label back-link">
-          ← Portfolio / {String(index + 1).padStart(2, "0")}
+          <VectorIcon name="left" /> Portfolio / {String(index + 1).padStart(2, "0")}
         </Link>
         <h1>
           {company.name}
@@ -55,11 +56,11 @@ export default async function CompanyPage({ params }: Props) {
               target="_blank"
               rel="noopener noreferrer"
             >
-              Visit {company.name} <span aria-hidden="true">↗</span>
+              Visit {company.name} <VectorIcon />
             </a>
           ) : (
             <Link href="/contact" className="text-link">
-              Enquire about {company.name} ↗
+              Enquire about {company.name} <VectorIcon />
             </Link>
           )}
         </div>
@@ -103,10 +104,10 @@ export default async function CompanyPage({ params }: Props) {
         aria-label="Portfolio navigation"
       >
         <Link href="/#companies" className="text-link">
-          ← All products
+          <VectorIcon name="left" /> All products
         </Link>
         <Link href={`/companies/${next.slug}`} className="text-link">
-          Next: {next.name} ↗
+          Next: {next.name} <VectorIcon />
         </Link>
       </nav>
     </main>

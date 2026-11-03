@@ -1,3 +1,4 @@
+import { VectorIcon } from "@/components/vector-icon";
 import Link from "next/link";
 import { contact } from "@/lib/data";
 
@@ -7,12 +8,11 @@ export function Footer() {
       <div className="container">
         <div className="footer-top">
           <div>
-            <h2>Discuss a product.</h2>
-            <p>Strategy, interfaces and software engineering.</p>
+            <h2>Let’s build.</h2>
           </div>
           <div className="footer-contact">
             <Link href="/contact" className="btn btn-light">
-              Start a conversation <span aria-hidden="true">↗</span>
+              Talk to us <VectorIcon />
             </Link>
             <a href={`mailto:${contact.email}`}>{contact.email}</a>
           </div>
@@ -21,7 +21,6 @@ export function Footer() {
           <Link href="/" className="wordmark">
             altcorp.
           </Link>
-          <p>India · Independent by design</p>
           <p>© {new Date().getFullYear()} Altcorp</p>
         </div>
         <nav className="footer-links" aria-label="Footer navigation">

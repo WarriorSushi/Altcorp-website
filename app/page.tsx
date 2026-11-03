@@ -10,7 +10,7 @@ export const metadata: Metadata = {
     description:
       "Specific products for planning, feedback, AI conversation, research, games and forecasting.",
     images: [
-      { url: "/art/material-study-monochrome.webp", width: 1536, height: 1024 },
+      { url: "/art/tiger-monochrome.webp", width: 1536, height: 1024 },
     ],
   },
 };

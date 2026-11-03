@@ -1,5 +1,7 @@
 "use client";
 
+import { VectorIcon } from "@/components/vector-icon";
+
 import { useState, type FormEvent } from "react";
 import { createContactEmail } from "@/lib/contact";
 
@@ -78,12 +80,12 @@ export function ContactForm() {
         className="btn btn-fill"
         aria-describedby="email-note"
       >
-        Prepare email <span aria-hidden="true">↗</span>
+        Prepare email <VectorIcon />
       </button>
       {draft ? (
         <p className="form-feedback" role="status">
           Your draft is ready. Finish sending in your email app.{" "}
-          <a href={draft}>Open the draft again ↗</a>
+          <a href={draft}>Open the draft again <VectorIcon /></a>
         </p>
       ) : null}
     </form>

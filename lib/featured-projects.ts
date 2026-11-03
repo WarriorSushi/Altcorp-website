@@ -3,6 +3,7 @@ export interface FeaturedProject {
   category: string;
   status: string;
   description: string;
+  summary: string;
   focus: string[];
   href?: string;
 }
@@ -11,6 +12,7 @@ export interface FeaturedProject {
 export const featuredProjects: FeaturedProject[] = [
   {
     name: "Hyperstate",
+    summary: "Maps, tasks and AI-connected plans.",
     category: "Planning software",
     status: "Live product",
     description:
@@ -20,6 +22,7 @@ export const featuredProjects: FeaturedProject[] = [
   },
   {
     name: "Feedbacks.dev",
+    summary: "Feedback widgets, boards and product updates.",
     category: "Product feedback",
     status: "Public product",
     description:
@@ -29,6 +32,7 @@ export const featuredProjects: FeaturedProject[] = [
   },
   {
     name: "MyGang.ai",
+    summary: "Multi-character AI chat with memory.",
     category: "Conversational AI",
     status: "Public product",
     description:
@@ -42,6 +46,7 @@ export const featuredProjects: FeaturedProject[] = [
   },
   {
     name: "research.cheap",
+    summary: "Citation import, deduplication and screening.",
     category: "Research software",
     status: "Public preview",
     description:
@@ -51,6 +56,7 @@ export const featuredProjects: FeaturedProject[] = [
   },
   {
     name: "SOVLR",
+    summary: "310 sliding-letter puzzles. One career.",
     category: "Puzzle game",
     status: "Web game",
     description:
@@ -60,6 +66,7 @@ export const featuredProjects: FeaturedProject[] = [
   },
   {
     name: "KeyboardShortcuts",
+    summary: "Keyboard-led interaction tools.",
     category: "Interface development",
     status: "In development",
     description:
@@ -68,6 +75,7 @@ export const featuredProjects: FeaturedProject[] = [
   },
   {
     name: "forecast.social",
+    summary: "Probability forecasts and reputation scoring.",
     category: "Forecasting network",
     status: "Invitation access",
     description:

@@ -1,5 +1,7 @@
 "use client";
 
+import { VectorIcon } from "@/components/vector-icon";
+
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { Reveal } from "@/components/reveal";
@@ -41,7 +43,7 @@ export function CompanyRow({ name, description, sector, href, delay = 0 }: Compa
             className="company-arrow"
             style={{ fontSize: "0.9rem", color: "var(--dim)", textAlign: "right" }}
           >
-            →
+            <VectorIcon name="right" />
           </motion.span>
         </motion.div>
       </Link>

@@ -1,3 +1,4 @@
+import { VectorIcon } from "@/components/vector-icon";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -8,21 +9,9 @@ export const metadata = {
 };
 
 const disciplines = [
-  {
-    title: "Product systems",
-    description:
-      "Connected planning in Hyperstate and product feedback workflows in Feedbacks.dev. Software that organises work and keeps useful context close.",
-  },
-  {
-    title: "AI interactions",
-    description:
-      "Multi-character conversations in MyGang.ai and evidence-led research workflows in research.cheap. Different interaction models for different tasks.",
-  },
-  {
-    title: "Play and participation",
-    description:
-      "Sliding-letter puzzles in SOVLR, reputation-based calls in forecast.social, and keyboard-led interface work in development.",
-  },
+  { title: "Product systems", description: "Connected planning and product feedback." },
+  { title: "AI interactions", description: "Conversation, memory and research workflows." },
+  { title: "Play and participation", description: "Puzzles, forecasting and keyboard-led interfaces." },
 ];
 
 export default function AboutPage() {
@@ -31,19 +20,16 @@ export default function AboutPage() {
       <section className="container editorial-intro">
         <p className="section-label">About Altcorp</p>
         <h1>
-          Product direction.
+          Software.
           <br />
-          <em>Software in practice.</em>
+          <em>With purpose.</em>
         </h1>
         <div className="editorial-intro-bottom">
           <p className="lead-copy">
             A software and AI practice led by Dr. Syed Irfan.
           </p>
           <p className="body-text">
-            Altcorp develops products across planning, feedback, AI
-            conversation, research workflows, games and forecasting. The
-            portfolio includes public products, invitation-based access and work
-            in development.
+            Independent product strategy, interface design and engineering.
           </p>
         </div>
       </section>
@@ -64,18 +50,10 @@ export default function AboutPage() {
             <em>Distinct products.</em>
           </h2>
           <p className="body-text">
-            A planning tool needs a way to preserve relationships between tasks.
-            A feedback system needs to carry evidence from a user’s report into
-            a product decision. A word game needs clear rules, progression and
-            responsive interaction.
-          </p>
-          <p className="body-text">
-            These are the kinds of product questions Altcorp works through:
-            define the problem, choose the interaction model, then design,
-            engineer and verify the software.
+            Define the problem. Choose the interaction. Build and verify the software.
           </p>
           <Link href="/#work" className="text-link">
-            Explore the selected projects ↗
+            Selected work <VectorIcon />
           </Link>
         </div>
       </section>
@@ -91,7 +69,7 @@ export default function AboutPage() {
           ))}
         </div>
         <Link href="/leadership" className="text-link">
-          Meet the founder ↗
+          Meet the founder <VectorIcon />
         </Link>
       </section>
     </main>

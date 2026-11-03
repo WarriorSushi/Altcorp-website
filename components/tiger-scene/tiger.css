@@ -1,0 +1,10 @@
+.tiger-art { position: absolute; inset: 0; z-index: -1; overflow: hidden; pointer-events: none; }
+.tiger-art .tiger-stage { position: absolute; inset: auto 0 0; max-width: none !important; }
+.tiger-stage .ss-stage { background: transparent; }
+.tiger-material { width: 1536px; height: 1024px; opacity: .74; transform: translate3d(16px, 10px, 0); transition: transform 1.8s cubic-bezier(.25,.8,.25,1), opacity 1.5s ease, filter 1.3s ease; }
+.tiger-material[data-arrived="true"] { transform: translate3d(0,0,0); opacity: 1; }
+.tiger-material[data-lit="true"] { filter: brightness(1.12); }
+.tiger-image { display: block; width: 1536px; height: 1024px; max-width: none; mix-blend-mode: screen; }
+.tiger-stage [data-layout="compact"] .tiger-material { width: 390px; height: 450px; }
+.tiger-stage [data-layout="compact"] .tiger-image { position: absolute; width: 720px; height: 480px; left: -310px; top: -45px; }
+@media (prefers-reduced-motion: reduce) { .tiger-material { transform: none !important; opacity: 1 !important; filter: none !important; transition: none !important; } }

@@ -30,10 +30,10 @@ export const metadata: Metadata = {
     siteName: "Altcorp",
     images: [
       {
-        url: "/art/material-study-monochrome.webp",
+        url: "/art/tiger-monochrome.webp",
         width: 1536,
         height: 1024,
-        alt: "Original frosted glass and enamel material study for Altcorp",
+        alt: "Altcorp tiger in charcoal, frost and silver enamel",
       },
     ],
   },

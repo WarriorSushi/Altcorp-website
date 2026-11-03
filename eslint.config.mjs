@@ -12,6 +12,8 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // Vendored StageShow runtime is kept upstream; authored scenes remain linted.
+    "vendor/stageshow/**",
   ]),
 ]);
 

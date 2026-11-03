@@ -1,3 +1,4 @@
+import { VectorIcon } from "@/components/vector-icon";
 import { ContactForm } from "@/components/contact-form";
 import { contact } from "@/lib/data";
 
@@ -12,23 +13,16 @@ export default function ContactPage() {
     <main id="main-content">
       <section className="container editorial-intro contact-intro">
         <p className="section-label">Contact</p>
-        <h1>
-          A question.
-          <br />
-          An idea. <em>A beginning.</em>
-        </h1>
+        <h1>Let’s <em>talk.</em></h1>
         <p className="lead-copy">Tell us what you have in mind.</p>
       </section>
       <section className="container contact-layout">
         <div className="contact-aside">
           <p className="section-label">Write to Altcorp</p>
           <a href={`mailto:${contact.email}`} className="contact-email">
-            {contact.email} ↗
+            {contact.email} <VectorIcon />
           </a>
-          <p className="body-text">
-            For product questions, partnership conversations and possibilities
-            worth exploring.
-          </p>
+
           <div className="contact-detail">
             <span className="section-label">Based in</span>
             <p>{contact.location}</p>

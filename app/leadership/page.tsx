@@ -1,3 +1,4 @@
+import { VectorIcon } from "@/components/vector-icon";
 import Image from "next/image";
 import Link from "next/link";
 import { founder } from "@/lib/data";
@@ -20,14 +21,9 @@ export default function LeadershipPage() {
             <em>Irfan.</em>
           </h1>
           <p className="founder-role">{founder.role}</p>
-          <p className="lead-copy">
-            Independent perspective.
-            <br />
-            Long-term commitment.
-          </p>
-          <p className="body-text">{founder.extendedBio}</p>
+          <p className="body-text">Product direction, strategy and software development.</p>
           <Link href="/contact" className="text-link">
-            Start a conversation ↗
+            Get in touch <VectorIcon />
           </Link>
         </div>
         <figure className="founder-photo">
@@ -41,19 +37,7 @@ export default function LeadershipPage() {
           <figcaption>Dr. Syed Irfan / Founder, Altcorp</figcaption>
         </figure>
       </section>
-      <section className="container founder-note">
-        <p className="section-label">Direction & continuity</p>
-        <h2>
-          Clear direction.
-          <br />
-          <em>Room to develop.</em>
-        </h2>
-        <p className="body-text">
-          Each product in the Altcorp portfolio serves a distinct audience.
-          Leadership brings continuity to the work through shared strategy,
-          focused product development and the patience to build over time.
-        </p>
-      </section>
+
     </main>
   );
 }
