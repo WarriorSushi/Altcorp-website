@@ -1,63 +1,118 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
-import { navigation } from "@/lib/data";
-import { MobileNav } from "./mobile-nav";
+import { usePathname } from "next/navigation";
+
+const links = [
+  { label: "Approach", href: "/#approach" },
+  { label: "Portfolio", href: "/#companies" },
+  { label: "About", href: "/about" },
+];
 
 export function Header() {
-  const [scrolled, setScrolled] = useState(false);
-  const [mobileOpen, setMobileOpen] = useState(false);
+  const [open, setOpen] = useState(false);
+  const menu = useRef<HTMLDialogElement>(null);
+  const trigger = useRef<HTMLButtonElement>(null);
+  const pathname = usePathname();
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 12);
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+    const dialog = menu.current;
+    if (open) {
+      dialog?.showModal();
+      document.body.style.overflow = "hidden";
+    } else {
+      dialog?.close();
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [open]);
+
+  function close() {
+    setOpen(false);
+    trigger.current?.focus();
+  }
 
   return (
     <>
-      <header
-        className={`fixed top-0 left-0 right-0 z-90 transition-all duration-300 ${
-          scrolled
-            ? "py-4 backdrop-blur-xl bg-[rgba(3,3,3,0.85)] border-b border-[var(--line)]"
-            : "py-6"
-        }`}
-      >
-        <div className="flex items-center justify-between gap-4 sm:gap-8 max-w-[1200px] mx-auto px-5 sm:px-8 w-full">
-          <Link href="/" className="flex items-center gap-0 shrink-0">
-            <span className="text-[0.88rem] font-[900] tracking-[0.08em] uppercase">
-              Alt
-            </span>
-            <span className="text-[0.88rem] font-[400] tracking-[0.08em] uppercase text-[var(--dim)]">
-              corp
-            </span>
+      <a href="#main-content" className="skip-link">
+        Skip to content
+      </a>
+      <header className="site-header">
+        <div className="container header-inner">
+          <Link href="/" className="wordmark" aria-label="Altcorp home">
+            altcorp<span>.</span>
           </Link>
-          <nav className="ml-auto hidden md:flex gap-[2rem]">
-            {navigation.map((item) => (
+          <nav className="desktop-nav" aria-label="Main navigation">
+            {links.map((link) => (
               <Link
-                key={item.href}
-                href={item.href}
-                className="text-[var(--dim)] text-[0.72rem] font-[600] tracking-[0.08em] uppercase transition-colors duration-300 hover:text-white"
+                key={link.href}
+                href={link.href}
+                aria-current={pathname === link.href ? "page" : undefined}
               >
-                {item.label}
+                {link.label}
               </Link>
             ))}
+            <Link href="/contact" className="nav-contact">
+              Start a conversation <span aria-hidden="true">↗</span>
+            </Link>
           </nav>
           <button
-            className="md:hidden inline-flex h-11 w-11 shrink-0 items-center justify-center"
-            onClick={() => setMobileOpen(true)}
-            aria-label="Open menu"
+            ref={trigger}
+            type="button"
+            className="menu-trigger"
+            onClick={() => setOpen(true)}
+            aria-haspopup="dialog"
+            aria-expanded={open}
+            aria-controls="mobile-menu"
           >
-            <span className="flex flex-col gap-[5px]">
-              <span className="block w-5 h-px bg-white" />
-              <span className="block w-5 h-px bg-white" />
-              <span className="block w-5 h-px bg-white" />
-            </span>
+            Menu <span aria-hidden="true">☰</span>
           </button>
         </div>
       </header>
-      <MobileNav open={mobileOpen} onClose={() => setMobileOpen(false)} />
+      <dialog
+        ref={menu}
+        id="mobile-menu"
+        className="mobile-menu"
+        aria-label="Site navigation"
+        onCancel={(event) => {
+          event.preventDefault();
+          close();
+        }}
+        onClick={(event) => {
+          if (event.target === event.currentTarget) close();
+        }}
+        onClose={() => setOpen(false)}
+      >
+        <div className="mobile-menu-inner">
+          <div className="mobile-menu-top">
+            <span className="wordmark">altcorp.</span>
+            <button
+              type="button"
+              onClick={close}
+              autoFocus
+              aria-label="Close menu"
+            >
+              Close ×
+            </button>
+          </div>
+          <nav aria-label="Mobile navigation">
+            {links.map((link) => (
+              <Link key={link.href} href={link.href} onClick={close}>
+                {link.label} <span aria-hidden="true">↗</span>
+              </Link>
+            ))}
+            <Link href="/contact" onClick={close}>
+              Let’s talk <span aria-hidden="true">↗</span>
+            </Link>
+          </nav>
+          <a className="menu-email" href="mailto:contact@altcorp.in">
+            contact@altcorp.in
+          </a>
+        </div>
+      </dialog>
     </>
   );
 }

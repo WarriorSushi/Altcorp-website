@@ -1,28 +1,56 @@
 import type { Metadata } from "next";
-import { Geist } from "next/font/google";
+import { Geist, DM_Serif_Display } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
-import { Grain } from "@/components/grain";
 
-const geist = Geist({ subsets: ["latin"], variable: "--font-geist" });
+const geist = Geist({
+  subsets: ["latin"],
+  variable: "--font-geist",
+  display: "swap",
+});
+const editorial = DM_Serif_Display({
+  subsets: ["latin"],
+  weight: "400",
+  style: ["normal", "italic"],
+  variable: "--font-editorial",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
-  title: "Altcorp — Companies, Products, and Platforms",
-  description: "The parent company behind software products, digital platforms, and operating brands.",
-  icons: {
-    icon: "/logo.png",
+  metadataBase: new URL("https://www.altcorp.in"),
+  title: "Altcorp — Exploration, Strategy & Production",
+  description:
+    "An independent digital and AI studio. Exploring possibilities, shaping strategy and bringing considered products to life.",
+  openGraph: {
+    title: "Altcorp — Instinct meets intelligence.",
+    description:
+      "Exploration, strategy and production for a world being reshaped by AI.",
+    type: "website",
+    siteName: "Altcorp",
+    images: [
+      {
+        url: "/art/material-study.webp",
+        width: 1536,
+        height: 1024,
+        alt: "Original frosted glass and enamel material study for Altcorp",
+      },
+    ],
   },
+  icons: { icon: "/brand-icon.svg" },
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
-    <html lang="en" className={geist.variable}>
-      <body className="font-[family-name:var(--font-geist)]">
+    <html lang="en" className={`${geist.variable} ${editorial.variable}`}>
+      <body>
         <Header />
         {children}
         <Footer />
-        <Grain />
       </body>
     </html>
   );

@@ -1,165 +1,91 @@
 "use client";
 
-import { useState, FormEvent } from "react";
-
-type FormStatus = "idle" | "submitting" | "success" | "error";
-
-const FORMSPREE_URL = "https://formspree.io/f/FORM_ID"; // Replace FORM_ID with your Formspree form ID
-
-const inputStyle: React.CSSProperties = {
-  background: "rgba(255,255,255,0.015)",
-  border: "1px solid var(--line)",
-  borderRadius: 0,
-  color: "var(--white)",
-  padding: "1rem 1rem",
-  fontSize: "0.92rem",
-  fontFamily: "inherit",
-  width: "100%",
-  outline: "none",
-  transition: "border-color 0.2s, background 0.2s",
-};
-
-const labelStyle: React.CSSProperties = {
-  color: "var(--dim)",
-  fontSize: "0.62rem",
-  fontWeight: 700,
-  letterSpacing: "0.14em",
-  textTransform: "uppercase",
-  display: "block",
-  marginBottom: "0.4rem",
-};
+import { useState, type FormEvent } from "react";
+import { createContactEmail } from "@/lib/contact";
 
 export function ContactForm() {
-  const [status, setStatus] = useState<FormStatus>("idle");
-
-  const handleFocus = (e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    e.target.style.borderColor = "rgba(255,255,255,0.3)";
-  };
-
-  const handleBlur = (e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    e.target.style.borderColor = "var(--line)";
-  };
-
-  async function handleSubmit(e: FormEvent<HTMLFormElement>) {
-    e.preventDefault();
-    setStatus("submitting");
-
-    try {
-      const res = await fetch(FORMSPREE_URL, {
-        method: "POST",
-        body: new FormData(e.currentTarget),
-        headers: { Accept: "application/json" },
-      });
-
-      if (res.ok) {
-        setStatus("success");
-      } else {
-        setStatus("error");
-      }
-    } catch {
-      setStatus("error");
-    }
+  const [draft, setDraft] = useState<string>();
+  function handleSubmit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    const form = new FormData(event.currentTarget);
+    const href = createContactEmail({
+      name: String(form.get("name") ?? ""),
+      email: String(form.get("email") ?? ""),
+      inquiry: String(form.get("inquiry") ?? ""),
+      message: String(form.get("message") ?? ""),
+    });
+    setDraft(href);
+    window.location.href = href;
   }
-
-  if (status === "success") {
-    return (
-      <div className="contact-form-state">
-        <span className="meta-label">Sent</span>
-        <p style={{ color: "var(--white)", fontWeight: 700, fontSize: "0.92rem", marginTop: "0.35rem" }}>
-        Message sent. We&apos;ll be in touch.
-        </p>
-      </div>
-    );
-  }
-
   return (
-    <form onSubmit={handleSubmit} className="contact-form">
-      <div>
-        <label style={labelStyle} htmlFor="name">Name</label>
-        <input
-          id="name"
-          name="name"
-          type="text"
-          required
-          style={inputStyle}
-          onFocus={handleFocus}
-          onBlur={handleBlur}
-        />
+    <form
+      className="contact-form"
+      onSubmit={handleSubmit}
+      action="mailto:contact@altcorp.in"
+      method="post"
+      encType="text/plain"
+    >
+      <div className="form-pair">
+        <div>
+          <label htmlFor="name">Your name</label>
+          <input
+            id="name"
+            name="name"
+            autoComplete="name"
+            maxLength={120}
+            required
+          />
+        </div>
+        <div>
+          <label htmlFor="email">Email address</label>
+          <input
+            id="email"
+            name="email"
+            type="email"
+            autoComplete="email"
+            maxLength={254}
+            required
+          />
+        </div>
       </div>
-
       <div>
-        <label style={labelStyle} htmlFor="email">Email</label>
-        <input
-          id="email"
-          name="email"
-          type="email"
-          required
-          style={inputStyle}
-          onFocus={handleFocus}
-          onBlur={handleBlur}
-        />
-      </div>
-
-      <div>
-        <label style={labelStyle} htmlFor="inquiry">Inquiry Type</label>
+        <label htmlFor="inquiry">
+          What would you like to explore? <span>(optional)</span>
+        </label>
         <input
           id="inquiry"
           name="inquiry"
-          type="text"
-          placeholder="Partnership / Business / Product"
-          style={inputStyle}
-          onFocus={handleFocus}
-          onBlur={handleBlur}
+          placeholder="A product, a partnership, a possibility…"
+          maxLength={160}
         />
       </div>
-
       <div>
-        <label style={labelStyle} htmlFor="message">Message</label>
+        <label htmlFor="message">A little more about your idea</label>
         <textarea
           id="message"
           name="message"
           rows={5}
+          maxLength={4000}
           required
-          style={{ ...inputStyle, resize: "vertical" }}
-          onFocus={handleFocus}
-          onBlur={handleBlur}
         />
       </div>
-
+      <p className="form-note" id="email-note">
+        This opens your email app with a prepared draft. Nothing is sent
+        automatically.
+      </p>
       <button
         type="submit"
-        disabled={status === "submitting"}
-        style={{
-          width: "100%",
-          minHeight: 52,
-          background: "var(--white)",
-          color: "#000",
-          fontWeight: 800,
-          textTransform: "uppercase",
-          fontSize: "0.78rem",
-          letterSpacing: "0.1em",
-          border: "none",
-          borderRadius: 0,
-          cursor: status === "submitting" ? "not-allowed" : "pointer",
-          opacity: status === "submitting" ? 0.5 : 1,
-          fontFamily: "inherit",
-          transition: "opacity 0.2s",
-        }}
-        onMouseEnter={(e) => {
-          if (status !== "submitting") e.currentTarget.style.background = "var(--dim)";
-        }}
-        onMouseLeave={(e) => {
-          e.currentTarget.style.background = "var(--white)";
-        }}
+        className="btn btn-fill"
+        aria-describedby="email-note"
       >
-        {status === "submitting" ? "Sending..." : "Send Message"}
+        Prepare email <span aria-hidden="true">↗</span>
       </button>
-
-      {status === "error" && (
-        <p style={{ color: "var(--ghost)", fontSize: "0.82rem" }}>
-          Something went wrong. Try again.
+      {draft ? (
+        <p className="form-feedback" role="status">
+          Your draft is ready. Finish sending in your email app.{" "}
+          <a href={draft}>Open the draft again ↗</a>
         </p>
-      )}
+      ) : null}
     </form>
   );
 }
