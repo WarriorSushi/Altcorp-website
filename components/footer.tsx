@@ -7,8 +7,8 @@ export function Footer() {
       <div className="container">
         <div className="footer-top">
           <div>
-            <h2>What comes next?</h2>
-            <p>Let’s explore it together.</p>
+            <h2>Discuss a product.</h2>
+            <p>Strategy, interfaces and software engineering.</p>
           </div>
           <div className="footer-contact">
             <Link href="/contact" className="btn btn-light">
@@ -26,7 +26,7 @@ export function Footer() {
         </div>
         <nav className="footer-links" aria-label="Footer navigation">
           <Link href="/about">About</Link>
-          <Link href="/#companies">Portfolio</Link>
+          <Link href="/#work">Work</Link>
           <Link href="/leadership">Leadership</Link>
           <Link href="/contact">Contact</Link>
         </nav>

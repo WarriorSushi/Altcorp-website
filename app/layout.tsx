@@ -19,18 +19,18 @@ const editorial = DM_Serif_Display({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.altcorp.in"),
-  title: "Altcorp — Exploration, Strategy & Production",
+  title: "Altcorp — Software, Systems & Applied AI",
   description:
-    "An independent digital and AI studio. Exploring possibilities, shaping strategy and bringing considered products to life.",
+    "Software products and AI workflows across planning, feedback, conversation, research, games and forecasting.",
   openGraph: {
-    title: "Altcorp — Instinct meets intelligence.",
+    title: "Altcorp — Software, Systems & Applied AI",
     description:
-      "Exploration, strategy and production for a world being reshaped by AI.",
+      "Product strategy, interface design and software engineering. Explore Altcorp’s selected projects.",
     type: "website",
     siteName: "Altcorp",
     images: [
       {
-        url: "/art/material-study.webp",
+        url: "/art/material-study-monochrome.webp",
         width: 1536,
         height: 1024,
         alt: "Original frosted glass and enamel material study for Altcorp",

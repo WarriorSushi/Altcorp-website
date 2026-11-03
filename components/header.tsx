@@ -5,8 +5,8 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 const links = [
+  { label: "Work", href: "/#work" },
   { label: "Approach", href: "/#approach" },
-  { label: "Portfolio", href: "/#companies" },
   { label: "About", href: "/about" },
 ];
 
@@ -15,6 +15,15 @@ export function Header() {
   const menu = useRef<HTMLDialogElement>(null);
   const trigger = useRef<HTMLButtonElement>(null);
   const pathname = usePathname();
+  const isPreview = pathname === "/studio-preview";
+  const homePath = isPreview ? "/studio-preview" : "/";
+  const pageLinks = isPreview
+    ? [
+        { label: "Work", href: "/studio-preview#work" },
+        { label: "Approach", href: "/studio-preview#approach" },
+        { label: "About", href: "/studio-preview#studio" },
+      ]
+    : links;
 
   useEffect(() => {
     const dialog = menu.current;
@@ -42,11 +51,11 @@ export function Header() {
       </a>
       <header className="site-header">
         <div className="container header-inner">
-          <Link href="/" className="wordmark" aria-label="Altcorp home">
+          <Link href={homePath} className="wordmark" aria-label="Altcorp home">
             altcorp<span>.</span>
           </Link>
           <nav className="desktop-nav" aria-label="Main navigation">
-            {links.map((link) => (
+            {pageLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
@@ -56,7 +65,7 @@ export function Header() {
               </Link>
             ))}
             <Link href="/contact" className="nav-contact">
-              Start a conversation <span aria-hidden="true">↗</span>
+              Contact <span aria-hidden="true">↗</span>
             </Link>
           </nav>
           <button
@@ -99,7 +108,7 @@ export function Header() {
             </button>
           </div>
           <nav aria-label="Mobile navigation">
-            {links.map((link) => (
+            {pageLinks.map((link) => (
               <Link key={link.href} href={link.href} onClick={close}>
                 {link.label} <span aria-hidden="true">↗</span>
               </Link>
